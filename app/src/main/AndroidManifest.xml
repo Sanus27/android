@@ -37,8 +37,11 @@
         </activity>
         <activity android:name=".Activities.CrearCuentaActivity" />
         <activity android:name=".Activities.MainActivity" />
-        <activity android:name=".Activities.CurriculumActivity" />
-        <activity android:name=".Activities.CompletaRegistroActivity"></activity>
+        <activity
+            android:name=".Activities.CurriculumActivity"
+            android:parentActivityName=".Activities.MainActivity" />
+        <activity android:name=".Activities.CompletaRegistroActivity" />
+        <activity android:name=".Activities.ComentariosDoctorActivity"></activity>
     </application>
 
 </manifest>

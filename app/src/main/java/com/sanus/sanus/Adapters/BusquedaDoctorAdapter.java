@@ -2,6 +2,7 @@ package com.sanus.sanus.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -57,16 +58,15 @@ public class BusquedaDoctorAdapter extends RecyclerView.Adapter<BusquedaDoctorAd
         holder.especialidad.setText(busquedaDoctorList.get(position).getEspecialidad());
 
 
-        final String user_id = busquedaDoctorList.get(position).userId;
-
+        //String user_id = doc.getDocument().getId();
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "User ID: " + user_id, Toast.LENGTH_SHORT).show();
-
+               // Toast.makeText(context, "User ID: " + user_id, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, CurriculumActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
                 context.startActivity(intent);
                 //https://www.youtube.com/watch?v=ZXoGG2XTjzU
             }

@@ -2,8 +2,12 @@
 <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/abc_action_bar_default_height_material"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorPrimary"
+    app:titleMarginEnd="@dimen/activity_horizontal_margin"
+    app:title="Sanus"
+    app:titleTextColor="@android:color/black"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+    app:navigationIcon="@drawable/ic_arrow">
 
 </android.support.v7.widget.Toolbar>

@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.firestore.DocumentChange;
@@ -27,6 +28,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.sanus.sanus.Adapters.BusquedaDoctorAdapter;
 import com.sanus.sanus.Data.BusquedaDoctor;
 import com.sanus.sanus.R;
+import android.os.Bundle;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -99,13 +101,22 @@ public class BusquedaFragment extends Fragment {
                        String nombre = doc.getDocument().getString("nombre");
                        String especialidad = doc.getDocument().getString("especialidad");
 
+
+                       String user_id = doc.getDocument().getId();
+                       Bundle miBundle = new Bundle();
+                       miBundle.putString("id",user_id);
+
+                        mFirestore.collection("doctores").document(user_id);
+
                        //String user_id = doc.getDocument().getId();
                        //busquedaDoctors.add(new BusquedaDoctor(nombre, especialidad).withId(user_id));
                        //https://www.youtube.com/watch?v=kyGVgrLG3KU
                        busquedaDoctors.add(new BusquedaDoctor(nombre, especialidad));
                        listAuxiliar.add(new BusquedaDoctor(nombre, especialidad));
+                       //Toast.makeText(getContext(), "id: " + user_id, Toast.LENGTH_SHORT).show();
 
                        adapter.notifyDataSetChanged();
+
                    }
                }
            }

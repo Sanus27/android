@@ -28,40 +28,39 @@
                 android:src="@drawable/hforo" />
         </LinearLayout>
 
-        <android.support.v7.widget.CardView
-            android:id="@+id/carSearch"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="180dp">
 
             <LinearLayout
                 android:id="@+id/lySearch"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="180dp"
+                android:background="@drawable/btnredondo"
                 android:orientation="horizontal"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:weightSum="3">
 
                 <SearchView
                     android:id="@+id/buscador"
                     android:layout_width="300dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/btnredondo"
                     android:gravity="center"
                     android:inputType="text"
-                    android:queryHint="¿Qué síntomas tiene?"></SearchView>
+                    android:queryHint="¿Qué síntomas tiene?">
+
+                </SearchView>
             </LinearLayout>
-        </android.support.v7.widget.CardView>
+
 
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fabAdd"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginLeft="285dp"
+            android:layout_marginLeft="255dp"
             android:layout_marginTop="100dp"
-            android:src="@drawable/icon_mas"
+            android:src="@drawable/ic_add_circle_outline_white_48dp"
             app:backgroundTint="@color/btnCrea" />
 
     </RelativeLayout>

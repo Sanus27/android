@@ -52,7 +52,6 @@ public class CompletaRegistroActivity extends AppCompatActivity {
     private Uri filePath;
     private final int PICK_IMAGE_REQUEST = 234;
     private StorageReference storageReference;
-
     String[] items;
 
     @Override
@@ -76,10 +75,10 @@ public class CompletaRegistroActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                sexo(1);
-                masculino.setBackgroundColor(getColor(R.color.black));
-                masculino.setTextColor(getColor(R.color.text));
-                femenino.setBackgroundColor(getColor(R.color.text));
-                femenino.setTextColor(getColor(R.color.black));
+                masculino.setBackgroundColor(getResources().getColor(R.color.black));
+                masculino.setTextColor(getResources().getColor(R.color.text));
+                femenino.setBackgroundColor(getResources().getColor(R.color.text));
+                femenino.setTextColor(getResources().getColor(R.color.black));
             }
         });
 
@@ -87,15 +86,13 @@ public class CompletaRegistroActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 sexo(2);
-                femenino.setBackgroundColor(getColor(R.color.black));
-                femenino.setTextColor(getColor(R.color.text));
-                masculino.setBackgroundColor(getColor(R.color.text));
-                masculino.setTextColor(getColor(R.color.black));
+                femenino.setBackgroundColor(getResources().getColor(R.color.black));
+                femenino.setTextColor(getResources().getColor(R.color.text));
+                masculino.setBackgroundColor(getResources().getColor(R.color.text));
+                masculino.setTextColor(getResources().getColor(R.color.black));
 
             }
         });
-
-
 
 
         imgCamara.setOnClickListener(new View.OnClickListener() {
@@ -128,12 +125,8 @@ public class CompletaRegistroActivity extends AppCompatActivity {
                 String name = nombre.getText().toString();
                 String apelli = apellido.getText().toString();
                 String edaD = edadPosition;
-
-
                 masculino.getText().toString();
                 femenino.getText().toString();
-
-
                 Map<String, String> userMap = new HashMap<>();
                 userMap.put("tipo", "Paciente");
                 userMap.put("nombre", name);
@@ -179,7 +172,6 @@ public class CompletaRegistroActivity extends AppCompatActivity {
             }
         }
     }
-
 
     public void onClick(View view) {
 
