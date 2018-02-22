@@ -41,7 +41,7 @@ public class CurriculumActivity extends AppCompatActivity {
     private FirebaseFirestore mFirestore;
     private FirebaseAuth auth;
     TextView nombre1, cv, especialidad, cedula;
-    FloatingActionButton btnCometario;
+    FloatingActionButton btnCometario, nuevoComentario;
     String user_id;
 
     @Override
@@ -55,6 +55,7 @@ public class CurriculumActivity extends AppCompatActivity {
         especialidad = (TextView) findViewById(R.id.tvEspecialidad);
         cedula = (TextView) findViewById(R.id.tvCedula);
         btnCometario = (FloatingActionButton) findViewById(R.id.floatinIrComentarios);
+        nuevoComentario = (FloatingActionButton) findViewById(R.id.floatinNewComent);
         mFirestore = FirebaseFirestore.getInstance();
         initializedData();
 
@@ -62,6 +63,13 @@ public class CurriculumActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CurriculumActivity.this, ComentariosDoctorActivity.class);
+                startActivity(intent);
+            }
+        });
+        nuevoComentario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CurriculumActivity.this, NuevoComentarioDoctor.class);
                 startActivity(intent);
             }
         });
@@ -82,7 +90,6 @@ public class CurriculumActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if(task.isSuccessful()){
-
                     DocumentSnapshot documentSnapshot = task.getResult();
                     if(documentSnapshot != null) {
                         user_id = documentSnapshot.getId();
@@ -90,14 +97,11 @@ public class CurriculumActivity extends AppCompatActivity {
                         String nombre = documentSnapshot.getString("nombre");
                         String esp = documentSnapshot.getString("especialidad");
                         String cvv = documentSnapshot.getString("cv");
-                        //String cedul = documentSnapshot.getString("cedula");
-
-                       //Toast.makeText(CurriculumActivity.this, "" + cedul, Toast.LENGTH_SHORT).show();
+                        String cedul = documentSnapshot.getString("cedula");
                         nombre1.setText(nombre);
                         especialidad.setText(esp);
                         cv.setText(cvv);
-                        //cedula.setText(cedul);
-
+                        cedula.setText(cedul);
                     }else{
                         Log.d(TAG, "No such document");
                     }

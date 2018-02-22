@@ -1,12 +1,10 @@
 package com.sanus.sanus.Data;
 
-import com.sanus.sanus.Fragments.UserId;
-
 /**
  * Created by Mireya on 09/02/2018.
  */
 
-public class BusquedaDoctor extends UserId{
+public class BusquedaDoctor{
     String nombre;
     String especialidad;
 

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context="com.sanus.sanus.Activities.NuevoComentarioDoctor">
+
+    <include layout="@layout/toolbar"/>
+
+    <LinearLayout
+        android:id="@+id/lyComentario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp">
+
+        <ImageView
+            android:id="@+id/user"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/user"/>
+
+        <EditText
+            android:id="@+id/edComentario"
+            android:layout_marginRight="@dimen/activity_vertical_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@drawable/btnredondo"
+            android:layout_marginTop="15dp"
+            android:hint="Escribe un comentario"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lyComentarioEnviar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/lyComentario">
+
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_below="@+id/user"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:progressTint="@color/colorPrimaryDark"
+            android:numStars="5" />
+
+        <ImageView
+            android:id="@+id/btnGuardarComentario"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_below="@+id/edComentario"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:text="Guardar comentario"
+            android:src="@drawable/ic_enviar"
+            android:textColor="@color/text" />
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -41,7 +41,8 @@
             android:name=".Activities.CurriculumActivity"
             android:parentActivityName=".Activities.MainActivity" />
         <activity android:name=".Activities.CompletaRegistroActivity" />
-        <activity android:name=".Activities.ComentariosDoctorActivity"></activity>
+        <activity android:name=".Activities.ComentariosDoctorActivity" />
+        <activity android:name=".Activities.NuevoComentarioDoctor"></activity>
     </application>
 
 </manifest>
