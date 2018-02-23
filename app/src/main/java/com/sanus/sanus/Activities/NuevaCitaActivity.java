@@ -2,8 +2,12 @@ package com.sanus.sanus.Activities;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -21,6 +25,7 @@ public class NuevaCitaActivity extends AppCompatActivity implements View.OnClick
     TextView fecha, horas;
     ImageView btnFecha, btnHora;
     private int dia,mes, anio, hora, minutos;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +38,10 @@ public class NuevaCitaActivity extends AppCompatActivity implements View.OnClick
         horas = (TextView) findViewById(R.id.edHora);
         btnHora.setOnClickListener(this);
         btnFecha.setOnClickListener(this);
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
 
@@ -64,5 +73,21 @@ public class NuevaCitaActivity extends AppCompatActivity implements View.OnClick
             timePickerDialog.show();
         }
 
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem menuItem){
+        switch (menuItem.getItemId()){
+            case android.R.id.home:
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                break;
+
+        }
+        return true;
     }
 }

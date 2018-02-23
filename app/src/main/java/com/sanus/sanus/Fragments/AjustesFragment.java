@@ -58,14 +58,13 @@ public class AjustesFragment extends Fragment {
         imageView = (ImageView) view.findViewById(R.id.imgCerrar);
         textViewCerrar = (TextView) view.findViewById(R.id.tvCerrar);
         tvNombre = (TextView) view.findViewById(R.id.tvNombre);
+        //initializedData();
 
-        initializedData();
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
                 builder.setIcon(R.mipmap.ic_launcher)
                         .setTitle("Cerrar sesión")
                         .setMessage("¿Cerrar sesion?")
@@ -92,7 +91,6 @@ public class AjustesFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
                 builder.setIcon(R.mipmap.ic_launcher)
                         .setTitle("Cerrar sesión")
                         .setMessage("¿Cerrar sesion?")
@@ -116,7 +114,7 @@ public class AjustesFragment extends Fragment {
     }
 
     private void initializedData() {
-        ajustesDataList = new ArrayList<>();
+        //ajustesDataList = new ArrayList<>();
         final DocumentReference docRef = mFirestore.collection("usuarios").document("4x7UEpdg0yY2gSaWkJmnXinW4SG2");
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -124,10 +122,9 @@ public class AjustesFragment extends Fragment {
                 if(task.isSuccessful()){
                     DocumentSnapshot documentSnapshot = task.getResult();
                     if(documentSnapshot != null) {
-                        //user_id = documentSnapshot.getId();
+                        String user_id = documentSnapshot.getId();
                         Log.d(TAG, "DocumentSnapshot data: " + task.getResult().getData());
                         String nombre = documentSnapshot.getString("nombre");
-
                         tvNombre.setText(nombre);
 
                     }else{

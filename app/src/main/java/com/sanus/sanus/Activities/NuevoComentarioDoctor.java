@@ -80,7 +80,7 @@ public class NuevoComentarioDoctor extends AppCompatActivity {
                 userMap.put("fecha", fechaA);
                 userMap.put("usuario", id);
                 userMap.put("calificacion", String.valueOf(valoracion));
-
+                userMap.put("doctor", "SpodpPneX1Ry4O5pm9NfY8kJucy1");
                 mFirestore.collection("comentarios").add(userMap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {

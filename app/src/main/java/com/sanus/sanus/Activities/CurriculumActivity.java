@@ -94,7 +94,7 @@ public class CurriculumActivity extends AppCompatActivity {
     }
     private void initializedData() {
         datosDoctorList = new ArrayList<>();
-        final DocumentReference docRef = mFirestore.collection("doctores").document("a2Df0tPqIsfA10yfQ2uAqFIGBcY2");
+        final DocumentReference docRef = mFirestore.collection("doctores").document("SpodpPneX1Ry4O5pm9NfY8kJucy1");
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
