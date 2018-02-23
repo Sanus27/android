@@ -1,10 +1,14 @@
 package com.sanus.sanus.Activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
@@ -26,6 +30,7 @@ public class ComentariosDoctorActivity extends AppCompatActivity {
     List<ComentarioDoctor> comentarioDoctorList;
     ComentarioDoctorAdapter adapter;
     private FirebaseFirestore mFirestore;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +48,12 @@ public class ComentariosDoctorActivity extends AppCompatActivity {
         initializedData();
         adapter = new ComentarioDoctorAdapter(getApplicationContext(), comentarioDoctorList);
         recyclerView.setAdapter(adapter);
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
     }
 
     private void initializedData() {
@@ -64,6 +75,22 @@ public class ComentariosDoctorActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem menuItem){
+        switch (menuItem.getItemId()){
+            case android.R.id.home:
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                break;
+
+        }
+        return true;
     }
 
 }

@@ -49,8 +49,8 @@ public class CompletaRegistroActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private String edadPosition;
     private String sex = "Masculino";
-    private Uri filePath;
-    private final int PICK_IMAGE_REQUEST = 234;
+    //private Uri filePath;
+    //private final int PICK_IMAGE_REQUEST = 234;
     private StorageReference storageReference;
     String[] items;
 
@@ -95,12 +95,12 @@ public class CompletaRegistroActivity extends AppCompatActivity {
         });
 
 
-        imgCamara.setOnClickListener(new View.OnClickListener() {
+       /* imgCamara.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showFileChooser();
             }
-        });
+        });*/
         //obtener edad
         items = getResources().getStringArray(R.array.Edad);
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(),android.R.layout.simple_spinner_item, items);
@@ -152,7 +152,7 @@ public class CompletaRegistroActivity extends AppCompatActivity {
         });
     }
 
-    private void showFileChooser(){
+   /* private void showFileChooser(){
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -211,7 +211,7 @@ public class CompletaRegistroActivity extends AppCompatActivity {
         }else{
 
         }
-    }
+    }*/
 
     public void sexo(int num){
         if(num==1){

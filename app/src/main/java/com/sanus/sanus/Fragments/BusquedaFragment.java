@@ -105,15 +105,19 @@ public class BusquedaFragment extends Fragment {
 
 
                        String user_id = doc.getDocument().getId();
-                       Intent intent = new Intent(getContext(), CurriculumActivity.class);
-                       intent.putExtra("id", user_id);
-                       Bundle miBundle = new Bundle();
-                       miBundle.putString("id",user_id);
+                      // Intent intent = new Intent(getContext(), CurriculumActivity.class);
+                      // intent.putExtra("id", user_id);
+                       //startActivity(intent);
 
-                        mFirestore.collection("doctores").document(user_id);
+                       BusquedaFragment busquedaFragment = new BusquedaFragment();
+                       Bundle bundle = new Bundle();
 
-                       //String user_id = doc.getDocument().getId();
-                       //busquedaDoctors.add(new BusquedaDoctor(nombre, especialidad).withId(user_id));
+                       bundle.putSerializable("id", user_id);
+
+                       busquedaFragment.setArguments(bundle);
+
+
+
                        //https://www.youtube.com/watch?v=kyGVgrLG3KU
                        busquedaDoctors.add(new BusquedaDoctor(nombre, especialidad));
                        listAuxiliar.add(new BusquedaDoctor(nombre, especialidad));

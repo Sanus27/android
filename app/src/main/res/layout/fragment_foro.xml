@@ -54,14 +54,13 @@
 
 
 
-        <android.support.design.widget.FloatingActionButton
+        <ImageView
             android:id="@+id/fabAdd"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginLeft="255dp"
-            android:layout_marginTop="100dp"
-            android:src="@drawable/ic_add_circle_outline_white_48dp"
-            app:backgroundTint="@color/btnCrea" />
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginLeft="250dp"
+            android:layout_marginTop="90dp"
+            android:src="@drawable/icon_mas" />
 
     </RelativeLayout>
 

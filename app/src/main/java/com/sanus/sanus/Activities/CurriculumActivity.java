@@ -1,13 +1,19 @@
 package com.sanus.sanus.Activities;
 
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +30,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.sanus.sanus.Data.BusquedaDoctor;
 import com.sanus.sanus.Data.ComentarioDoctor;
 import com.sanus.sanus.Data.DatosDoctor;
+import com.sanus.sanus.Fragments.BusquedaFragment;
 import com.sanus.sanus.R;
 
 import java.util.ArrayList;
@@ -41,28 +48,33 @@ public class CurriculumActivity extends AppCompatActivity {
     private FirebaseFirestore mFirestore;
     private FirebaseAuth auth;
     TextView nombre1, cv, especialidad, cedula;
-    FloatingActionButton btnCometario, nuevoComentario;
+    FloatingActionButton btnCometario;
+    ImageView nuevoComentario;
     String user_id;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_curriculum);
-        setupActionBar();
+        //setupActionBar();
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         nombre1 = (TextView) findViewById(R.id.tvNombre);
         cv = (TextView) findViewById(R.id.tvCv);
         especialidad = (TextView) findViewById(R.id.tvEspecialidad);
         cedula = (TextView) findViewById(R.id.tvCedula);
         btnCometario = (FloatingActionButton) findViewById(R.id.floatinIrComentarios);
-        nuevoComentario = (FloatingActionButton) findViewById(R.id.floatinNewComent);
+        nuevoComentario = (ImageView) findViewById(R.id.floatinNewComent);
         mFirestore = FirebaseFirestore.getInstance();
         initializedData();
 
-       // Bundle bundle = getIntent().getExtras();
-        //String idUs = bundle.getString("id");
-
-        //Toast.makeText(this, "id us" + idUs, Toast.LENGTH_SHORT).show();
+        //Bundle params = getIntent().getExtras();
+        //params.get("id");
+        //Toast.makeText(this, "id Dotor" + get("id"), Toast.LENGTH_SHORT).show();
 
         btnCometario.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,17 +92,9 @@ public class CurriculumActivity extends AppCompatActivity {
         });
 
     }
-    private void setupActionBar(){
-        ActionBar actionBar = getSupportActionBar();
-        if(actionBar != null){
-            actionBar.setDisplayShowHomeEnabled(true);
-            actionBar.setTitle("Sanus");
-        }
-
-        }
     private void initializedData() {
         datosDoctorList = new ArrayList<>();
-        final DocumentReference docRef = mFirestore.collection("doctores").document("OTYMy6HA1EPTrQHzuV3E");
+        final DocumentReference docRef = mFirestore.collection("doctores").document("a2Df0tPqIsfA10yfQ2uAqFIGBcY2");
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -115,6 +119,22 @@ public class CurriculumActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem menuItem){
+        switch (menuItem.getItemId()){
+            case android.R.id.home:
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                break;
+
+        }
+        return true;
     }
 
 

@@ -7,14 +7,12 @@ package com.sanus.sanus.Data;
 public class Citas {
     String doctor;
     String fecha;
-    //String usuario;
     String hospital;
     String hora;
 
     public Citas(String doctor, String fecha, String hospital, String hora) {
         this.doctor = doctor;
         this.fecha = fecha;
-        //this.usuario = usuario;
         this.hospital = hospital;
         this.hora = hora;
     }
@@ -25,7 +23,6 @@ public class Citas {
     public void setHora(String hora) {
         this.hora = hora;
     }
-
 
     public String getDoctor() {
         return doctor;
@@ -42,14 +39,6 @@ public class Citas {
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
-
-    /*public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }*/
 
     public String getHospital() {
         return hospital;

@@ -53,14 +53,20 @@ public class BusquedaDoctorAdapter extends RecyclerView.Adapter<BusquedaDoctorAd
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.nombre.setText(busquedaDoctorList.get(position).getNombre());
         holder.especialidad.setText(busquedaDoctorList.get(position).getEspecialidad());
-        //String user_id = doc.getDocument().getId();
+
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // Toast.makeText(context, "User ID: " + user_id, Toast.LENGTH_SHORT).show();
+
+                //Bundle params = getIntent().getExtras();
+                //Toast.makeText(this, "hi" + params.get("id"), Toast.LENGTH_SHORT).show();
+                /*Bundle params = new Bundle();
+                params.get("id");
+                holder.mView.saveHierarchyState(Bundle);*/
+                //Toast.makeText(context, "hi: " + params, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, CurriculumActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
