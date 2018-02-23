@@ -56,17 +56,13 @@ public class BusquedaDoctorAdapter extends RecyclerView.Adapter<BusquedaDoctorAd
     public void onBindViewHolder(ViewHolder holder, final int position) {
         holder.nombre.setText(busquedaDoctorList.get(position).getNombre());
         holder.especialidad.setText(busquedaDoctorList.get(position).getEspecialidad());
-
-
         //String user_id = doc.getDocument().getId();
-
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                // Toast.makeText(context, "User ID: " + user_id, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, CurriculumActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
                 context.startActivity(intent);
                 //https://www.youtube.com/watch?v=ZXoGG2XTjzU
             }
@@ -86,10 +82,7 @@ public class BusquedaDoctorAdapter extends RecyclerView.Adapter<BusquedaDoctorAd
     }
 
     @Override
-    public boolean onQueryTextChange(String newText) {
-
-        return false;
-    }
+    public boolean onQueryTextChange(String newText) {return false;}
 
     public void setFilter(List<BusquedaDoctor> busquedaDoctorList){
         busquedaDoctorList = new ArrayList<>();
@@ -97,28 +90,21 @@ public class BusquedaDoctorAdapter extends RecyclerView.Adapter<BusquedaDoctorAd
         notifyDataSetChanged();
     }
 
-
     public class ViewHolder extends RecyclerView.ViewHolder{
         View mView;
-
         TextView nombre, especialidad;
         CardView cardView;
         ImageView imageView;
         EditText edbuscador;
-
         public ViewHolder(View itemView) {
-
             super(itemView);
             mView = itemView;
-
             //cardView = (CardView) itemView.findViewById(R.id.cardView);
             nombre = (TextView) itemView.findViewById(R.id.nombre);
             especialidad = (TextView) itemView.findViewById(R.id.especialidad);
             imageView = (ImageView) itemView.findViewById(R.id.avatar);
-
             //buscador
             edbuscador = (EditText) itemView.findViewById(R.id.edbuscador);
-
         }
     }
 

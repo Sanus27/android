@@ -68,7 +68,20 @@
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:layout_marginTop="8dp"
-                android:text="Nombre" />
+                android:text="Nombre"
+                android:textSize="16dp"
+                style="@style/titulos"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Especialidad:"/>
 
             <TextView
                 android:id="@+id/tvEspecialidad"
@@ -79,6 +92,20 @@
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:text="Especialidad" />
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="@dimen/activity_horizontal_margin">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:text="Cedula" />
+
             <TextView
                 android:id="@+id/tvCedula"
                 android:layout_width="match_parent"
@@ -87,6 +114,10 @@
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
                 android:layout_marginRight="@dimen/activity_horizontal_margin"
                 android:text="Cedula" />
+
+            </LinearLayout>
+
+
         </LinearLayout>
 
         <LinearLayout

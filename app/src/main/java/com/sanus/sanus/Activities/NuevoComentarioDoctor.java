@@ -43,6 +43,7 @@ public class NuevoComentarioDoctor extends AppCompatActivity {
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         ratingBar.getRating();
 
+
         mFirestore = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
 
@@ -64,22 +65,22 @@ public class NuevoComentarioDoctor extends AppCompatActivity {
                 float valoracion = ratingBar.getRating();
                 String fechaA = (dia + "/" + (mes+1) + "/" +anio);
 
-
                 Map<String, String> userMap = new HashMap<>();
                 userMap.put("comentario", cometario);
                 userMap.put("fecha", fechaA);
                 userMap.put("usuario", id);
+                userMap.put("valoracion", String.valueOf(valoracion));
 
                 mFirestore.collection("comentarios").add(userMap).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
                         Intent intent = new Intent(getApplicationContext(), CurriculumActivity.class);
                         startActivity(intent);
+                        finish();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-
                         Toast.makeText(NuevoComentarioDoctor.this, "error " + e, Toast.LENGTH_SHORT).show();
                     }
                 });

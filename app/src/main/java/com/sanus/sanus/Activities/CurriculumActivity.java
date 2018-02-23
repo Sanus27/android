@@ -59,6 +59,11 @@ public class CurriculumActivity extends AppCompatActivity {
         mFirestore = FirebaseFirestore.getInstance();
         initializedData();
 
+       // Bundle bundle = getIntent().getExtras();
+        //String idUs = bundle.getString("id");
+
+        //Toast.makeText(this, "id us" + idUs, Toast.LENGTH_SHORT).show();
+
         btnCometario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

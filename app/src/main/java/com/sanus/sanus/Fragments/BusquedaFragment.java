@@ -1,5 +1,6 @@
 package com.sanus.sanus.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -25,6 +26,7 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.sanus.sanus.Activities.CurriculumActivity;
 import com.sanus.sanus.Adapters.BusquedaDoctorAdapter;
 import com.sanus.sanus.Data.BusquedaDoctor;
 import com.sanus.sanus.R;
@@ -103,6 +105,8 @@ public class BusquedaFragment extends Fragment {
 
 
                        String user_id = doc.getDocument().getId();
+                       Intent intent = new Intent(getContext(), CurriculumActivity.class);
+                       intent.putExtra("id", user_id);
                        Bundle miBundle = new Bundle();
                        miBundle.putString("id",user_id);
 
@@ -113,8 +117,7 @@ public class BusquedaFragment extends Fragment {
                        //https://www.youtube.com/watch?v=kyGVgrLG3KU
                        busquedaDoctors.add(new BusquedaDoctor(nombre, especialidad));
                        listAuxiliar.add(new BusquedaDoctor(nombre, especialidad));
-                       //Toast.makeText(getContext(), "id: " + user_id, Toast.LENGTH_SHORT).show();
-
+                       Toast.makeText(getContext(), "id: " + user_id, Toast.LENGTH_SHORT).show();
                        adapter.notifyDataSetChanged();
 
                    }

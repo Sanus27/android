@@ -42,7 +42,8 @@
             android:parentActivityName=".Activities.MainActivity" />
         <activity android:name=".Activities.CompletaRegistroActivity" />
         <activity android:name=".Activities.ComentariosDoctorActivity" />
-        <activity android:name=".Activities.NuevoComentarioDoctor"></activity>
+        <activity android:name=".Activities.NuevoComentarioDoctor" />
+        <activity android:name=".Activities.NuevaCitaActivity"></activity>
     </application>
 
 </manifest>
