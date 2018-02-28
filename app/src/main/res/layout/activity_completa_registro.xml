@@ -30,31 +30,15 @@
                 android:src="@drawable/hcompleteregister" />
         </LinearLayout>
 
-
-        <ImageView
-            android:id="@+id/imgProfile"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/setup_image"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_centerHorizontal="true"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="40dp"
-            android:background="@android:color/transparent"
             android:src="@drawable/user" />
-
-        <ImageView
-            android:id="@+id/imgCamera"
-            android:layout_width="60dp"
-            android:layout_height="30dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="115dp"
-            android:src="@drawable/ic_camera" />
-        <ImageView
-            android:id="@+id/imgSave"
-            android:layout_width="60dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="200dp"
-            android:layout_marginTop="115dp"
-            android:src="@drawable/ic_good" />
-
 
         <LinearLayout
             android:id="@+id/lyComplete"
@@ -191,5 +175,4 @@
         </LinearLayout>
 
     </RelativeLayout>
-
 </LinearLayout>

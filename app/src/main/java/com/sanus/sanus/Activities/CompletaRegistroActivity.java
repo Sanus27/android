@@ -1,8 +1,13 @@
 package com.sanus.sanus.Activities;
 
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,16 +29,19 @@ import com.sanus.sanus.R;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 
 public class CompletaRegistroActivity extends AppCompatActivity {
     EditText nombre, apellido;
     Button masculino, femenino, guardar;
     Spinner spinnerEdad;
-    ImageView imgavatar, imgCamara, imgSave;
+    //ImageView imgavatar, imgCamara, imgSave;
     private FirebaseFirestore mFirestore;
     private FirebaseAuth auth;
     private String edadPosition;
     private String sex = "Masculino";
+    private CircleImageView setupImage;
     //private Uri filePath;
     //private final int PICK_IMAGE_REQUEST = 234;
     private StorageReference storageReference;
@@ -52,9 +60,11 @@ public class CompletaRegistroActivity extends AppCompatActivity {
         spinnerEdad = (Spinner) findViewById(R.id.spinnerEdad);
         guardar = (Button) findViewById(R.id.btnGuardar);
 
-        imgavatar =(ImageView) findViewById(R.id.imgHeader);
+        setupImage = findViewById(R.id.setup_image);
+
+        /*imgavatar =(ImageView) findViewById(R.id.imgHeader);
         imgCamara = (ImageView) findViewById(R.id.imgCamera);
-        imgSave = (ImageView) findViewById(R.id.imgSave);
+        imgSave = (ImageView) findViewById(R.id.imgSave);*/
 
         masculino.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +86,20 @@ public class CompletaRegistroActivity extends AppCompatActivity {
                 masculino.setBackgroundColor(getResources().getColor(R.color.text));
                 masculino.setTextColor(getResources().getColor(R.color.black));
 
+            }
+        });
+
+        setupImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                    if(ContextCompat.checkSelfPermission(CompletaRegistroActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                        Toast.makeText(CompletaRegistroActivity.this, "Permission Denied", Toast.LENGTH_LONG).show();
+                        ActivityCompat.requestPermissions(CompletaRegistroActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+                    }else{
+                        Toast.makeText(CompletaRegistroActivity.this, "Permission ok", Toast.LENGTH_LONG).show();
+                    }
+                }
             }
         });
 
