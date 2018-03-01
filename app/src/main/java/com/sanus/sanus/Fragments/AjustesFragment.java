@@ -9,15 +9,12 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,11 +22,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.sanus.sanus.Activities.LoginActivity;
-import com.sanus.sanus.Data.AjustesData;
 import com.sanus.sanus.R;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static android.content.ContentValues.TAG;
 
@@ -38,7 +31,6 @@ public class AjustesFragment extends Fragment {
 
     ImageView imageView;
     TextView textViewCerrar;
-    List<AjustesData> ajustesDataList;
     private FirebaseFirestore mFirestore;
     private FirebaseAuth auth;
     TextView tvNombre;

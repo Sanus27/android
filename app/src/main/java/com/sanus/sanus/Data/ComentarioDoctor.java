@@ -1,15 +1,16 @@
 package com.sanus.sanus.Data;
 
 /**
- * Created by Mireya on 16/02/2018.
+ * Created by Mireya on 28/02/2018.
  */
 
 public class ComentarioDoctor {
     String usuario;
     String cometario;
     String fecha;
+    String calificacion;
 
-    public ComentarioDoctor(String usuario, String cometario, String fecha) {
+    public ComentarioDoctor(String usuario, String cometario, String fecha, String calificacion) {
         this.usuario = usuario;
         this.cometario = cometario;
         this.fecha = fecha;
@@ -39,8 +40,8 @@ public class ComentarioDoctor {
         this.fecha = fecha;
     }
 
+    public String getCalificacion() {return calificacion;}
 
-
-
+    public void setCalificacion(String calificacion) {this.calificacion = calificacion;}
 
 }

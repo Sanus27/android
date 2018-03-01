@@ -28,70 +28,66 @@
 
 
 
-                <LinearLayout
-                    android:id="@+id/lyUsuario"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_weight="1"
-                    android:layout_marginTop="160dp"
-                    android:layout_marginBottom="@dimen/activity_vertical_margin"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:layout_marginRight="@dimen/activity_horizontal_margin"
-                    android:background="@drawable/btnredondo">
+        <LinearLayout
+            android:id="@+id/lyUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:layout_marginTop="160dp"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:background="@drawable/btnredondo">
 
-                    <ImageView
-                        android:id="@+id/imgAvatar"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_weight=".3"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
-                        android:src="@drawable/user" />
+            <ImageView
+                android:id="@+id/imgAvatar"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_weight=".3"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/user" />
 
-                    <TextView
-                        android:id="@+id/tvNombre"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight=".7"
-                        android:gravity="center"
-                        android:text="Mireya jim Perez"/>
-                </LinearLayout>
-
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_weight="1"
-                    android:layout_below="@+id/lyUsuario"
-                    android:background="@drawable/btnredondo"
-                    android:layout_marginBottom="@dimen/activity_vertical_margin"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:layout_marginRight="@dimen/activity_horizontal_margin">
-
-                    <ImageView
-                        android:id="@+id/imgCerrar"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_weight=".3"
-                        android:src="@drawable/ic_cerrar" />
-
-                    <TextView
-                        android:id="@+id/tvCerrar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight=".7"
-                        android:gravity="center"
-                        android:text="Cerrar sesion" />
-                </LinearLayout>
+            <TextView
+                android:id="@+id/tvNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight=".7"
+                android:gravity="center"
+                android:text="Mireya jim Perez"/>
+        </LinearLayout>
 
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:layout_below="@+id/lyUsuario"
+            android:background="@drawable/btnredondo"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin">
 
+            <ImageView
+                android:id="@+id/imgCerrar"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_weight=".3"
+                android:src="@drawable/ic_cerrar" />
+
+            <TextView
+                android:id="@+id/tvCerrar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight=".7"
+                android:gravity="center"
+                android:text="Cerrar sesion" />
+        </LinearLayout>
     </RelativeLayout>
 
 

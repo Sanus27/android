@@ -8,12 +8,112 @@
     android:orientation="vertical"
     android:background="@color/colorPrimary"
     tools:context="com.sanus.sanus.Activities.ComentariosDoctorActivity">
-<include layout="@layout/toolbar"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
+    <include layout="@layout/toolbar"/>
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-    </android.support.v7.widget.RecyclerView>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </android.support.v7.widget.RecyclerView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/shadow_top" />
+
+        <LinearLayout
+            android:id="@+id/llNoComments"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="32dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="no coments"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/llAddComment"
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:layout_gravity="bottom"
+        android:paddingBottom="4dp"
+        android:orientation="vertical"
+        android:weightSum="1"
+        android:background="@color/text">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:weightSum=".5">
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:progressTint="@color/colorPrimaryDark"
+                android:numStars="5"
+                android:stepSize="1"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_weight="9">
+
+                <EditText
+                    android:id="@+id/edComentario"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_weight="1">
+                <ImageView
+                    android:id="@+id/btnGuardarComentario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_enviar"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+        <!--<Button
+            android:id="@+id/btnSendComment"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/ic_enviar"
+            android:orientation="vertical" />-->
+
+    </LinearLayout>
+
 </LinearLayout>

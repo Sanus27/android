@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:scaleType="fitXY"
-                android:src="@drawable/hcompleteregister" />
+                android:src="@drawable/hcitas" />
         </LinearLayout>
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -175,4 +175,5 @@
         </LinearLayout>
 
     </RelativeLayout>
+
 </LinearLayout>

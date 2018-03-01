@@ -28,23 +28,23 @@
                 android:src="@drawable/hcitas" />
         </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/lyTitle"
-                android:background="@drawable/btnredondo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="90dp"
-                android:weightSum="3">
+        <LinearLayout
+            android:id="@+id/lyTitle"
+            android:background="@drawable/btnredondo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="90dp"
+            android:weightSum="3">
 
-                <TextView
-                    android:id="@+id/tvTitle"
-                    android:layout_width="250dp"
-                    android:layout_height="50dp"
-                    android:gravity="center"
-                    android:text="Mi historial de citas"></TextView>
-            </LinearLayout>
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="Mi historial de citas"></TextView>
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/fabAddCita"

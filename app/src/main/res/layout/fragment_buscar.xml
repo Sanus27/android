@@ -29,44 +29,42 @@
         </LinearLayout>
 
 
-            <LinearLayout
-                android:id="@+id/lySearch"
+        <LinearLayout
+            android:id="@+id/lySearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="180dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edbuscador"
+                android:hint="Busca por especialidad"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:layout_marginTop="180dp"
-                android:orientation="horizontal">
+                android:layout_height="43dp"
+                android:layout_gravity="center"
+                android:background="@drawable/btnredondo"
+                android:gravity="center"
+                android:imeActionId="6"
+                android:imeOptions="actionUnspecified"
+                android:maxLines="1"
+                android:singleLine="true">
+            </EditText>
 
-                <EditText
-                    android:id="@+id/edbuscador"
-                    android:hint="Busca por especialidad"
-                    android:layout_width="match_parent"
-                    android:layout_height="43dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/btnredondo"
-                    android:gravity="center"
-                    android:imeActionId="6"
-                    android:imeOptions="actionUnspecified"
-                    android:maxLines="1"
-                    android:singleLine="true">
-                </EditText>
-
-            </LinearLayout>
+        </LinearLayout>
 
     </RelativeLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="60dp">
 
     </android.support.v7.widget.RecyclerView>
-    </ScrollView>
+
 
 </LinearLayout>

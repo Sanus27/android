@@ -36,7 +36,6 @@ public class CrearCuentaActivity extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
 
-
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,9 +66,6 @@ public class CrearCuentaActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 Toast.makeText(CrearCuentaActivity.this, "Cuenta creada con el correo:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
                                 progressBar.setVisibility(View.GONE);
-                                // If sign in fails, display a message to the user. If sign in succeeds
-                                // the auth state listener will be notified and logic to handle the
-                                // signed in user can be handled in the listener.
                                 if (!task.isSuccessful()) {
                                     Toast.makeText(CrearCuentaActivity.this, "Autenticacion fallida" + task.getException(),
                                             Toast.LENGTH_SHORT).show();

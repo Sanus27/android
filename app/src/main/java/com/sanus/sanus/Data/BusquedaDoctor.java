@@ -4,7 +4,7 @@ package com.sanus.sanus.Data;
  * Created by Mireya on 09/02/2018.
  */
 
-public class BusquedaDoctor{
+public class BusquedaDoctor {
     String nombre;
     String especialidad;
 
@@ -28,5 +28,6 @@ public class BusquedaDoctor{
     public void setEspecialidad(String especialidad) {
         this.especialidad = especialidad;
     }
+
 
 }

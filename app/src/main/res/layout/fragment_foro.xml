@@ -29,28 +29,28 @@
         </LinearLayout>
 
 
-            <LinearLayout
-                android:id="@+id/lySearch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="180dp"
-                android:background="@drawable/btnredondo"
-                android:orientation="horizontal"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:weightSum="3">
+        <LinearLayout
+            android:id="@+id/lySearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="180dp"
+            android:background="@drawable/btnredondo"
+            android:orientation="horizontal"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:weightSum="3">
 
-                <SearchView
-                    android:id="@+id/buscador"
-                    android:layout_width="300dp"
-                    android:layout_height="50dp"
-                    android:gravity="center"
-                    android:inputType="text"
-                    android:queryHint="¿Qué síntomas tiene?">
+            <SearchView
+                android:id="@+id/buscador"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:inputType="text"
+                android:queryHint="¿Qué síntomas tiene?">
 
-                </SearchView>
-            </LinearLayout>
+            </SearchView>
+        </LinearLayout>
 
 
 

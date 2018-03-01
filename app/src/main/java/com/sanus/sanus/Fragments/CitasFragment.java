@@ -1,8 +1,5 @@
 package com.sanus.sanus.Fragments;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,22 +10,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.sanus.sanus.Activities.NuevaCitaActivity;
-import com.sanus.sanus.Adapters.BusquedaDoctorAdapter;
 import com.sanus.sanus.Adapters.CitasAdapter;
-import com.sanus.sanus.Data.BusquedaDoctor;
 import com.sanus.sanus.Data.Citas;
 import com.sanus.sanus.R;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import static android.content.ContentValues.TAG;
 
 public class CitasFragment extends Fragment {
@@ -61,8 +52,7 @@ public class CitasFragment extends Fragment {
         nuevaCita.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), NuevaCitaActivity.class);
-                startActivity(intent);
+                Log.d(TAG, "nueva cita: " );
             }
         });
 
@@ -88,7 +78,6 @@ public class CitasFragment extends Fragment {
                         String hospital = doc.getDocument().getString("hospital");
                         String fecha = doc.getDocument().getString("fecha");
                         String hora = doc.getDocument().getString("hora");
-                        //String usuario = doc.getDocument().getString("usuario");
 
                         busquedaDoctors.add(new Citas(doctor,hospital, fecha, hora));
 

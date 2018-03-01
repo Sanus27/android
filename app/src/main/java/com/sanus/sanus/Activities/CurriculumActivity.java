@@ -1,40 +1,32 @@
 package com.sanus.sanus.Activities;
 
-import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.sanus.sanus.Data.BusquedaDoctor;
-import com.sanus.sanus.Data.ComentarioDoctor;
+import com.google.firebase.storage.StorageReference;
 import com.sanus.sanus.Data.DatosDoctor;
-import com.sanus.sanus.Fragments.BusquedaFragment;
 import com.sanus.sanus.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 import static android.content.ContentValues.TAG;
 
@@ -45,12 +37,15 @@ import static android.content.ContentValues.TAG;
 public class CurriculumActivity extends AppCompatActivity {
 
     List<DatosDoctor> datosDoctorList;
+    private StorageReference storageReference;
     private FirebaseFirestore mFirestore;
     private FirebaseAuth auth;
     TextView nombre1, cv, especialidad, cedula;
     FloatingActionButton btnCometario;
     ImageView nuevoComentario;
     String user_id;
+    private CircleImageView setupImage;
+    private Uri mainImageURI = null;
     private Toolbar toolbar;
 
     @Override
@@ -59,18 +54,20 @@ public class CurriculumActivity extends AppCompatActivity {
         setContentView(R.layout.activity_curriculum);
         //setupActionBar();
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        nombre1 = (TextView) findViewById(R.id.tvNombre);
+
+        //nombre1 = (TextView) findViewById(R.id.tvNombre);
         cv = (TextView) findViewById(R.id.tvCv);
         especialidad = (TextView) findViewById(R.id.tvEspecialidad);
         cedula = (TextView) findViewById(R.id.tvCedula);
         btnCometario = (FloatingActionButton) findViewById(R.id.floatinIrComentarios);
         nuevoComentario = (ImageView) findViewById(R.id.floatinNewComent);
+        setupImage = findViewById(R.id.setup_image);
+
         mFirestore = FirebaseFirestore.getInstance();
         initializedData();
+
+
 
         //Bundle params = getIntent().getExtras();
         //params.get("id");
@@ -83,18 +80,72 @@ public class CurriculumActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        nuevoComentario.setOnClickListener(new View.OnClickListener() {
+        /*nuevoComentario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(CurriculumActivity.this, NuevoComentarioDoctor.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
     }
     private void initializedData() {
+
+
         datosDoctorList = new ArrayList<>();
-        final DocumentReference docRef = mFirestore.collection("doctores").document("SpodpPneX1Ry4O5pm9NfY8kJucy1");
+       /* mFirestore.collection("doctores").document("MbisakX6endQjlgSdPRqDcAibpY2").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
+
+
+                if (task.isSuccessful()){
+                    if (task.getResult().exists()){
+                        Toast.makeText(CurriculumActivity.this, "Data exist", Toast.LENGTH_SHORT).show();
+                        String nombre = task.getResult().getString("nombre");
+                        String especialidad1 = task.getResult().getString("especialidad");
+                        String cedul = task.getResult().getString("cedula");
+                        String cv = task.getResult().getString("cv");
+                        String image = task.getResult().getString("avatar");
+
+                        nombre1.setText(nombre);
+                        especialidad.setText(especialidad1);
+
+
+                        /*Glide.with(CurriculumActivity.this)
+                                .load(storageReference)
+                                .into(setupImage);
+
+
+                        //String url = "https://firebasestorage.googleapis.com/v0/b/sanus-27.appspot.com/o/avatar%2F6HcSZaUxLCUquc4G7Q2ntrFw47n2?alt=media&token=de9a955d-0c83-4763-a682-abf62126d70d";
+                        //setupImage.setImageURI(mainImageURI);
+                        //mainImageURI = Uri.parse(image);*/
+
+                        /*RequestOptions placeholderRequest = new RequestOptions();
+                        placeholderRequest.placeholder(R.drawable.default_image);
+                        Glide.with(CurriculumActivity.this).setDefaultRequestOptions(placeholderRequest).load(image).into(setupImage);
+                        Toast.makeText(CurriculumActivity.this, "img = " + image, Toast.LENGTH_SHORT).show();*/
+
+
+
+                        //mainImageURI = result.getUri();
+                        //setupImage.setImageURI(mainImageURI);
+
+                        /*Glide.with(CurriculumActivity.this)
+                                .load(url)
+                                .into(setupImage);*/
+
+                    /*}else{
+                        Toast.makeText(CurriculumActivity.this, "Data doen't exist", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    String error = task.getException().getMessage();
+                    Toast.makeText(CurriculumActivity.this, "FIRESTORE retrieve error "+ error, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });*/
+
+        final DocumentReference docRef = mFirestore.collection("doctores").document("MbisakX6endQjlgSdPRqDcAibpY2");
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -107,10 +158,20 @@ public class CurriculumActivity extends AppCompatActivity {
                         String esp = documentSnapshot.getString("especialidad");
                         String cvv = documentSnapshot.getString("cv");
                         String cedul = documentSnapshot.getString("cedula");
-                        nombre1.setText(nombre);
+                        String avat = documentSnapshot.getString("avatar");
+
+                       // mainImageURI = Uri.parse(image);
+                        //nombre1.setText(nombre);
                         especialidad.setText(esp);
                         cv.setText(cvv);
                         cedula.setText(cedul);
+                        //imgAvatarDoc.setText()
+
+                        toolbar = (Toolbar) findViewById(R.id.toolbar);
+                        setSupportActionBar(toolbar);
+                        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                        getSupportActionBar().setTitle(nombre);
+
                     }else{
                         Log.d(TAG, "No such document");
                     }
@@ -136,6 +197,13 @@ public class CurriculumActivity extends AppCompatActivity {
         }
         return true;
     }
+
+
+    /*@Override
+    protected void onActivityResult(int requestCode, Intent data){
+        super.onActivityResult(requestCode, requestCode, data);
+        if (requestCode == )
+    }*/
 
 
 

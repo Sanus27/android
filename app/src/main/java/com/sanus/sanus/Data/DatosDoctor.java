@@ -1,17 +1,20 @@
 package com.sanus.sanus.Data;
 
 /**
- * Created by Mireya on 15/02/2018.
+ * Created by Mireya on 28/02/2018.
  */
 
 public class DatosDoctor {
-    String nombre, especialidad, cv, cedula;
 
-    public DatosDoctor(String nombre, String especialidad, String cv, String cedula) {
+    String nombre, especialidad, cv, cedula;
+    String avatar;
+
+    public DatosDoctor(String nombre, String especialidad, String cv, String cedula, String avatar) {
         this.nombre = nombre;
         this.especialidad = especialidad;
         this.cv = cv;
         this.cedula = cedula;
+        this.avatar = avatar;
     }
 
     public String getNombre() {
@@ -46,5 +49,8 @@ public class DatosDoctor {
         this.cedula = cedula;
     }
 
+    public String getAvatar() {return avatar;}
+
+    public void setAvatar(String avatar) {this.avatar = avatar;}
 
 }
