@@ -141,10 +141,20 @@ public class ComentariosDoctorActivity extends AppCompatActivity {
                         String usuario = doc.getDocument().getString("usuario");
                         String fecha = doc.getDocument().getString("fecha");
                         String comentario = doc.getDocument().getString("comentario");
-                        String calificacion = doc.getDocument().getString("calificacion");
-                        comentarioDoctorList.add(new ComentarioDoctor(usuario,comentario,fecha, calificacion));
+                        String calificacion1 = doc.getDocument().getString("calificacion");
+                        comentarioDoctorList.add(new ComentarioDoctor(usuario,comentario,fecha, calificacion1));
 
-                        Toast.makeText(ComentariosDoctorActivity.this, "cal: " + calificacion, Toast.LENGTH_SHORT).show();
+                       //Toast.makeText(ComentariosDoctorActivity.this, "cal: " + calificacion1, Toast.LENGTH_SHORT).show();
+                        /*if (Integer.parseInt(calificacion1) == 20){
+                            Toast.makeText(ComentariosDoctorActivity.this, "20", Toast.LENGTH_SHORT).show();
+                            ratingBar.setRating(1);
+
+                        }
+                        if (Integer.parseInt(calificacion1) == 100){
+                            Toast.makeText(ComentariosDoctorActivity.this, "100", Toast.LENGTH_SHORT).show();
+                            ratingBar.setRating(5);
+
+                        }*/
 
                         adapter.notifyDataSetChanged();
                     }

@@ -28,12 +28,19 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="10dp"
             android:orientation="vertical">
-            <ImageView
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/setup_image"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:src="@drawable/user" />
+            <!--<ImageView
                 android:id="@+id/avatar"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
-                android:src="@drawable/user"/>
+                android:src="@drawable/user"/>-->
         </LinearLayout>
 
         <LinearLayout

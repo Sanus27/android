@@ -8,9 +8,13 @@ public class BusquedaDoctor {
     String nombre;
     String especialidad;
 
-    public BusquedaDoctor (String nombre, String especialidad){
+
+    String avatar;
+
+    public BusquedaDoctor (String nombre, String especialidad, String avatar){
         this.nombre = nombre;
         this.especialidad = especialidad;
+        this.avatar = avatar;
     }
 
     public String getNombre() {
@@ -28,6 +32,14 @@ public class BusquedaDoctor {
     public void setEspecialidad(String especialidad) {
         this.especialidad = especialidad;
     }
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
 
 
 }

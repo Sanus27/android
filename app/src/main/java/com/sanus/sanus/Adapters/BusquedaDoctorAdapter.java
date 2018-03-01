@@ -33,6 +33,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 /**
  * Created by Mireya on 09/02/2018.
  */
@@ -100,16 +102,18 @@ public class BusquedaDoctorAdapter extends RecyclerView.Adapter<BusquedaDoctorAd
     public class ViewHolder extends RecyclerView.ViewHolder{
         View mView;
         TextView nombre, especialidad;
-        CardView cardView;
-        ImageView imageView;
+        //CardView cardView;
+        //ImageView imageView;
         EditText edbuscador;
+        private CircleImageView setupAvatar;
         public ViewHolder(View itemView) {
             super(itemView);
             mView = itemView;
             //cardView = (CardView) itemView.findViewById(R.id.cardView);
             nombre = (TextView) itemView.findViewById(R.id.nombre);
             especialidad = (TextView) itemView.findViewById(R.id.especialidad);
-            imageView = (ImageView) itemView.findViewById(R.id.avatar);
+            setupAvatar = itemView.findViewById(R.id.setup_image);
+            //imageView = (ImageView) itemView.findViewById(R.id.avatar);
             //buscador
             edbuscador = (EditText) itemView.findViewById(R.id.edbuscador);
         }

@@ -13,6 +13,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,8 +22,11 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.sanus.sanus.Data.DatosDoctor;
 import com.sanus.sanus.R;
+import com.squareup.picasso.Picasso;
+import com.theartofdev.edmodo.cropper.CropImage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +45,7 @@ public class CurriculumActivity extends AppCompatActivity {
     private StorageReference storageReference;
     private FirebaseFirestore mFirestore;
     private FirebaseAuth auth;
-    TextView nombre1, cv, especialidad, cedula;
+    TextView nombre1, cv1, especialidad, cedula;
     FloatingActionButton btnCometario;
     ImageView nuevoComentario;
     String user_id;
@@ -57,7 +62,7 @@ public class CurriculumActivity extends AppCompatActivity {
 
 
         //nombre1 = (TextView) findViewById(R.id.tvNombre);
-        cv = (TextView) findViewById(R.id.tvCv);
+        cv1 = (TextView) findViewById(R.id.tvCv);
         especialidad = (TextView) findViewById(R.id.tvEspecialidad);
         cedula = (TextView) findViewById(R.id.tvCedula);
         btnCometario = (FloatingActionButton) findViewById(R.id.floatinIrComentarios);
@@ -90,14 +95,10 @@ public class CurriculumActivity extends AppCompatActivity {
 
     }
     private void initializedData() {
-
-
-        datosDoctorList = new ArrayList<>();
-       /* mFirestore.collection("doctores").document("MbisakX6endQjlgSdPRqDcAibpY2").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        //datosDoctorList = new ArrayList<>();
+       mFirestore.collection("doctores").document("MbisakX6endQjlgSdPRqDcAibpY2").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-
-
 
                 if (task.isSuccessful()){
                     if (task.getResult().exists()){
@@ -107,35 +108,24 @@ public class CurriculumActivity extends AppCompatActivity {
                         String cedul = task.getResult().getString("cedula");
                         String cv = task.getResult().getString("cv");
                         String image = task.getResult().getString("avatar");
-
-                        nombre1.setText(nombre);
                         especialidad.setText(especialidad1);
+                        cedula.setText(cedul);
+                        cv1.setText(cv);
+
+                        storeFirestore(null, user_id);
+                        mainImageURI = Uri.parse(image);
+                        //setupName.setText(name);
+
+                        toolbar = (Toolbar) findViewById(R.id.toolbar);
+                        setSupportActionBar(toolbar);
+                        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                        getSupportActionBar().setTitle(nombre);
+
+                        Picasso.with(CurriculumActivity.this).load(image).placeholder(R.drawable.default_image).into(setupImage);
+                        Toast.makeText(CurriculumActivity.this, "url: " + image, Toast.LENGTH_SHORT).show();
 
 
-                        /*Glide.with(CurriculumActivity.this)
-                                .load(storageReference)
-                                .into(setupImage);
-
-
-                        //String url = "https://firebasestorage.googleapis.com/v0/b/sanus-27.appspot.com/o/avatar%2F6HcSZaUxLCUquc4G7Q2ntrFw47n2?alt=media&token=de9a955d-0c83-4763-a682-abf62126d70d";
-                        //setupImage.setImageURI(mainImageURI);
-                        //mainImageURI = Uri.parse(image);*/
-
-                        /*RequestOptions placeholderRequest = new RequestOptions();
-                        placeholderRequest.placeholder(R.drawable.default_image);
-                        Glide.with(CurriculumActivity.this).setDefaultRequestOptions(placeholderRequest).load(image).into(setupImage);
-                        Toast.makeText(CurriculumActivity.this, "img = " + image, Toast.LENGTH_SHORT).show();*/
-
-
-
-                        //mainImageURI = result.getUri();
-                        //setupImage.setImageURI(mainImageURI);
-
-                        /*Glide.with(CurriculumActivity.this)
-                                .load(url)
-                                .into(setupImage);*/
-
-                    /*}else{
+                    }else{
                         Toast.makeText(CurriculumActivity.this, "Data doen't exist", Toast.LENGTH_SHORT).show();
                     }
                 } else {
@@ -143,9 +133,9 @@ public class CurriculumActivity extends AppCompatActivity {
                     Toast.makeText(CurriculumActivity.this, "FIRESTORE retrieve error "+ error, Toast.LENGTH_SHORT).show();
                 }
             }
-        });*/
+        });
 
-        final DocumentReference docRef = mFirestore.collection("doctores").document("MbisakX6endQjlgSdPRqDcAibpY2");
+       /* final DocumentReference docRef = mFirestore.collection("doctores").document("MbisakX6endQjlgSdPRqDcAibpY2");
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -179,7 +169,7 @@ public class CurriculumActivity extends AppCompatActivity {
                     Log.d(TAG, "get failed with", task.getException());
                 }
             }
-        });
+        });*/
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
@@ -198,12 +188,31 @@ public class CurriculumActivity extends AppCompatActivity {
         return true;
     }
 
+    private void storeFirestore(@NonNull Task<UploadTask.TaskSnapshot> task, String user_name) {
+        Uri download_uri;
+        if (task != null) {
+            download_uri = task.getResult().getDownloadUrl();
+        } else {
+            download_uri = mainImageURI;
+        }
+    }
 
-    /*@Override
-    protected void onActivityResult(int requestCode, Intent data){
-        super.onActivityResult(requestCode, requestCode, data);
-        if (requestCode == )
-    }*/
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+                mainImageURI = result.getUri();
+                setupImage.setImageURI(mainImageURI);
+                //isChanged = true;
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+                Exception error = result.getError();
+            }
+        }
+
+    }
 
 
 

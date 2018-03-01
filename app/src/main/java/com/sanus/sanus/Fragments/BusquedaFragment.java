@@ -21,11 +21,16 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import com.sanus.sanus.Activities.CurriculumActivity;
 import com.sanus.sanus.Adapters.BusquedaDoctorAdapter;
 import com.sanus.sanus.Data.BusquedaDoctor;
 import com.sanus.sanus.R;
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 import static android.content.ContentValues.TAG;
 
@@ -40,6 +45,7 @@ public class BusquedaFragment extends Fragment {
     BusquedaDoctorAdapter adapter;
     private FirebaseFirestore mFirestore;
     EditText edbuscador;
+    private CircleImageView setupAvatar;
 
     @Nullable
     @Override
@@ -54,6 +60,7 @@ public class BusquedaFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         edbuscador = (EditText) view.findViewById(R.id.edbuscador);
+        setupAvatar = view.findViewById(R.id.setup_image);
 
         recyclerView.setHasFixedSize(true);
 
@@ -94,12 +101,17 @@ public class BusquedaFragment extends Fragment {
                     if(doc.getType() == DocumentChange.Type.ADDED){
                         String nombre = doc.getDocument().getString("nombre");
                         String especialidad = doc.getDocument().getString("especialidad");
+                        String avatar = doc.getDocument().getString("avatar");
 
                         String user_id = doc.getDocument().getId();
                         //https://www.youtube.com/watch?v=kyGVgrLG3KU
-                        busquedaDoctors.add(new BusquedaDoctor(nombre, especialidad));
-                        listAuxiliar.add(new BusquedaDoctor(nombre, especialidad));
-                        Toast.makeText(getContext(), "id: " + user_id, Toast.LENGTH_SHORT).show();
+                        busquedaDoctors.add(new BusquedaDoctor(nombre, especialidad, avatar));
+                        listAuxiliar.add(new BusquedaDoctor(nombre, especialidad, avatar));
+
+                        //Picasso.with(getContext()).load(avatar).placeholder(R.drawable.default_image).into(setupAvatar);
+                        //Picasso.with(BusquedaFragment.this).load(avatar).placeholder(R.drawable.default_image).into(setupImage);
+                        //Toast.makeText(CurriculumActivity.this, "url: " + image, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "id: " + avatar, Toast.LENGTH_SHORT).show();
                         adapter.notifyDataSetChanged();
 
                     }
