@@ -113,6 +113,7 @@ public class ComentariosDoctorActivity extends AppCompatActivity {
                     public void onSuccess(DocumentReference documentReference) {
                         Intent intent = new Intent(getApplicationContext(), ComentariosDoctorActivity.class);
                         startActivity(intent);
+                        finish();
 
                     }
                 }).addOnFailureListener(new OnFailureListener() {
@@ -162,6 +163,7 @@ public class ComentariosDoctorActivity extends AppCompatActivity {
             case android.R.id.home:
                 Intent intent = new Intent(this, CurriculumActivity.class);
                 startActivity(intent);
+                finish();
                 break;
 
         }

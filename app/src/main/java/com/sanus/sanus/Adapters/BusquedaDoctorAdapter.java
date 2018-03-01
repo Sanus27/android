@@ -70,6 +70,7 @@ public class BusquedaDoctorAdapter extends RecyclerView.Adapter<BusquedaDoctorAd
                 Intent intent = new Intent(context, CurriculumActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
+
                 //https://www.youtube.com/watch?v=ZXoGG2XTjzU
             }
 
