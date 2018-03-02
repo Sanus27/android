@@ -56,7 +56,7 @@ public class BusquedaDoctorAdapter extends RecyclerView.Adapter<BusquedaDoctorAd
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        holder.nombre.setText(busquedaDoctorList.get(position).getNombre());
+        //holder.nombre.setText(busquedaDoctorList.get(position).getNombre());
         holder.especialidad.setText(busquedaDoctorList.get(position).getEspecialidad());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {

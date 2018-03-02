@@ -5,25 +5,25 @@ package com.sanus.sanus.Data;
  */
 
 public class BusquedaDoctor {
-    String nombre;
+    //String nombre;
     String especialidad;
 
 
     String avatar;
 
-    public BusquedaDoctor (String nombre, String especialidad, String avatar){
-        this.nombre = nombre;
+    public BusquedaDoctor (String especialidad, String avatar){
+        //this.nombre = nombre;
         this.especialidad = especialidad;
         this.avatar = avatar;
     }
 
-    public String getNombre() {
+    /*public String getNombre() {
         return nombre;
     }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
+    }*/
 
     public String getEspecialidad() {
         return especialidad;

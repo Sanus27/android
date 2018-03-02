@@ -15,7 +15,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -99,19 +103,54 @@ public class BusquedaFragment extends Fragment {
                 }
                 for(DocumentChange doc: documentSnapshots.getDocumentChanges()){
                     if(doc.getType() == DocumentChange.Type.ADDED){
-                        String nombre = doc.getDocument().getString("nombre");
+                        //String nombre = doc.getDocument().getString("nombre");
                         String especialidad = doc.getDocument().getString("especialidad");
                         String avatar = doc.getDocument().getString("avatar");
 
+                        mFirestore.collection("doctores").document("MbisakX6endQjlgSdPRqDcAibpY2").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
+                                if (task.isSuccessful()) {
+                                    if (task.getResult().exists()) {
+                                        Toast.makeText(getContext(), "Data exist", Toast.LENGTH_SHORT).show();
+                                        String nombre = task.getResult().getString("nombre");
+                                        String apellido = task.getResult().getString("apellido");
+                                        Toast.makeText(getContext(), "n" + apellido, Toast.LENGTH_SHORT).show();
+                                    }
+                                } else {
+                                    Toast.makeText(getContext(), "Data doen't exist", Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                });
+
+                        /*mFirestore.collection("usuarios").addSnapshotListener(new EventListener<QuerySnapshot>() {
+                            @Override
+                            public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+                                if (e!=null){
+                                    Log.d(TAG, "Error: " + e.getMessage());
+                                }
+                                for(DocumentChange doc: documentSnapshots.getDocumentChanges()){
+                                    if(doc.getType() == DocumentChange.Type.ADDED) {
+                                        String nombre = doc.getDocument().getString("nombre");
+                                        String apellido = doc.getDocument().getString("apellido");
+                                        Toast.makeText(getContext(), "n "+ nombre + apellido, Toast.LENGTH_SHORT).show();
+                                    }
+                                    }
+                            }
+                        });*/
+
+
                         String user_id = doc.getDocument().getId();
                         //https://www.youtube.com/watch?v=kyGVgrLG3KU
-                        busquedaDoctors.add(new BusquedaDoctor(nombre, especialidad, avatar));
-                        listAuxiliar.add(new BusquedaDoctor(nombre, especialidad, avatar));
+                        busquedaDoctors.add(new BusquedaDoctor( especialidad, avatar));
+                        listAuxiliar.add(new BusquedaDoctor( especialidad, avatar));
 
                         //Picasso.with(getContext()).load(avatar).placeholder(R.drawable.default_image).into(setupAvatar);
                         //Picasso.with(BusquedaFragment.this).load(avatar).placeholder(R.drawable.default_image).into(setupImage);
                         //Toast.makeText(CurriculumActivity.this, "url: " + image, Toast.LENGTH_SHORT).show();
-                        Toast.makeText(getContext(), "id: " + avatar, Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getContext(), "id: " + avatar, Toast.LENGTH_SHORT).show();
                         adapter.notifyDataSetChanged();
 
                     }
