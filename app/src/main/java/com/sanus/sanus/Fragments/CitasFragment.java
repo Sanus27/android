@@ -1,5 +1,6 @@
 package com.sanus.sanus.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,11 +11,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
+
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.sanus.sanus.Activities.CurriculumActivity;
+import com.sanus.sanus.Activities.SliderCitasActivity;
 import com.sanus.sanus.Adapters.CitasAdapter;
 import com.sanus.sanus.Data.Citas;
 import com.sanus.sanus.R;
@@ -52,7 +57,10 @@ public class CitasFragment extends Fragment {
         nuevaCita.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "nueva cita: " );
+                //Intent intent = new Intent(getContext(), SliderCitasActivity.class);
+                //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                //getContext().startActivity(intent);
+                Toast.makeText(getContext(), "new" , Toast.LENGTH_SHORT).show();
             }
         });
 
