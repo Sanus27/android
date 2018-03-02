@@ -10,13 +10,13 @@ public class ComentarioDoctor {
     String fecha;
     String calificacion;
 
-    public ComentarioDoctor(String usuario, String cometario, String fecha, String calificacion) {
+    public ComentarioDoctor( String usuario, String cometario, String fecha, String calificacion) {
         this.usuario = usuario;
         this.cometario = cometario;
         this.fecha = fecha;
     }
 
-    public String getUsuario() {
+   public String getUsuario() {
         return usuario;
     }
 

@@ -26,14 +26,14 @@ import com.sanus.sanus.Activities.CrearCuentaActivity;
 import com.sanus.sanus.Activities.CurriculumActivity;
 import com.sanus.sanus.Activities.MainActivity;
 import com.sanus.sanus.Data.BusquedaDoctor;
+import com.sanus.sanus.Fragments.BusquedaFragment;
 import com.sanus.sanus.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by Mireya on 09/02/2018.
@@ -56,8 +56,11 @@ public class BusquedaDoctorAdapter extends RecyclerView.Adapter<BusquedaDoctorAd
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        //holder.nombre.setText(busquedaDoctorList.get(position).getNombre());
+        holder.nombre.setText(busquedaDoctorList.get(position).getNombre());
         holder.especialidad.setText(busquedaDoctorList.get(position).getEspecialidad());
+
+        //String url = "https://firebasestorage.googleapis.com/v0/b/sanus-27.appspot.com/o/doctores%2Fconcierge-doctor-1.jpg?alt=media&token=bc8a6c07-53a0-4cb4-adc3-57ba05dbfbed";
+        //Picasso.with(context).load(url).placeholder(R.drawable.default_image).into(holder.imageView);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +75,6 @@ public class BusquedaDoctorAdapter extends RecyclerView.Adapter<BusquedaDoctorAd
                 Intent intent = new Intent(context, CurriculumActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
-
                 //https://www.youtube.com/watch?v=ZXoGG2XTjzU
             }
 
@@ -102,18 +104,17 @@ public class BusquedaDoctorAdapter extends RecyclerView.Adapter<BusquedaDoctorAd
     public class ViewHolder extends RecyclerView.ViewHolder{
         View mView;
         TextView nombre, especialidad;
-        //CardView cardView;
-        //ImageView imageView;
+        CardView cardView;
+        ImageView imageView;
         EditText edbuscador;
-        private CircleImageView setupAvatar;
         public ViewHolder(View itemView) {
             super(itemView);
             mView = itemView;
             //cardView = (CardView) itemView.findViewById(R.id.cardView);
             nombre = (TextView) itemView.findViewById(R.id.nombre);
             especialidad = (TextView) itemView.findViewById(R.id.especialidad);
-            setupAvatar = itemView.findViewById(R.id.setup_image);
-            //imageView = (ImageView) itemView.findViewById(R.id.avatar);
+            imageView = (ImageView) itemView.findViewById(R.id.avatar);
+
             //buscador
             edbuscador = (EditText) itemView.findViewById(R.id.edbuscador);
         }

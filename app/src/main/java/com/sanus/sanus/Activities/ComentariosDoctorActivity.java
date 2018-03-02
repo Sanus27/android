@@ -49,7 +49,7 @@ public class ComentariosDoctorActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private Toolbar toolbar;
     private int dia,mes, anio;
-    String id;
+    String id, nombre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +86,7 @@ public class ComentariosDoctorActivity extends AppCompatActivity {
             id=user.getUid();
         }
 
-        Toast.makeText(this, "my Id: " + id, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "my Id: " + id, Toast.LENGTH_SHORT).show();
 
         final java.util.Calendar calendar = Calendar.getInstance();
         dia = calendar.get(Calendar.DAY_OF_MONTH);
@@ -138,11 +138,29 @@ public class ComentariosDoctorActivity extends AppCompatActivity {
                 }
                 for(DocumentChange doc: documentSnapshots.getDocumentChanges()){
                     if(doc.getType() == DocumentChange.Type.ADDED){
-                        String usuario = doc.getDocument().getString("usuario");
+                        //String usuario = doc.getDocument().getString("usuario");
+
+                        mFirestore.collection("usuarios").addSnapshotListener(new EventListener<QuerySnapshot>() {
+                            @Override
+                            public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+                                if (e!=null){
+
+                                }
+                                for (DocumentChange doc: documentSnapshots.getDocumentChanges()){
+                                    if (doc.getType() == DocumentChange.Type.ADDED);
+                                    nombre = doc.getDocument().getString("nombre");
+                                    Toast.makeText(ComentariosDoctorActivity.this, "n " + nombre, Toast.LENGTH_SHORT).show();
+                                }
+
+                            }
+                        });
+
+                        String na = nombre;
                         String fecha = doc.getDocument().getString("fecha");
                         String comentario = doc.getDocument().getString("comentario");
                         String calificacion1 = doc.getDocument().getString("calificacion");
-                        comentarioDoctorList.add(new ComentarioDoctor(usuario,comentario,fecha, calificacion1));
+
+                        comentarioDoctorList.add(new ComentarioDoctor(na, comentario,fecha, calificacion1));
 
                        //Toast.makeText(ComentariosDoctorActivity.this, "cal: " + calificacion1, Toast.LENGTH_SHORT).show();
                         /*if (Integer.parseInt(calificacion1) == 20){

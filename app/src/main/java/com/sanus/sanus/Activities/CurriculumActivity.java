@@ -102,7 +102,7 @@ public class CurriculumActivity extends AppCompatActivity {
 
                 if (task.isSuccessful()){
                     if (task.getResult().exists()){
-                        Toast.makeText(CurriculumActivity.this, "Data exist", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(CurriculumActivity.this, "Data exist", Toast.LENGTH_SHORT).show();
                         String nombre = task.getResult().getString("nombre");
                         String especialidad1 = task.getResult().getString("especialidad");
                         String cedul = task.getResult().getString("cedula");
@@ -114,15 +114,17 @@ public class CurriculumActivity extends AppCompatActivity {
 
                         storeFirestore(null, user_id);
                         mainImageURI = Uri.parse(image);
-                        //setupName.setText(name);
+                        //setupName.setText(nombre);
 
                         toolbar = (Toolbar) findViewById(R.id.toolbar);
                         setSupportActionBar(toolbar);
                         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                         getSupportActionBar().setTitle(nombre);
 
-                        Picasso.with(CurriculumActivity.this).load(image).placeholder(R.drawable.default_image).into(setupImage);
-                        Toast.makeText(CurriculumActivity.this, "url: " + image, Toast.LENGTH_SHORT).show();
+                        String url = "https://firebasestorage.googleapis.com/v0/b/sanus-27.appspot.com/o/doctores%2Fconcierge-doctor-1.jpg?alt=media&token=bc8a6c07-53a0-4cb4-adc3-57ba05dbfbed";
+
+                        Picasso.with(CurriculumActivity.this).load(url).placeholder(R.drawable.default_image).into(setupImage);
+                        //Toast.makeText(CurriculumActivity.this, "url: " + image, Toast.LENGTH_SHORT).show();
 
 
                     }else{

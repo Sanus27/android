@@ -37,9 +37,9 @@ public class ComentarioDoctorAdapter extends RecyclerView.Adapter<ComentarioDoct
         holder.comentario.setText(comentarioDoctorList.get(position).getCometario());
         holder.usuario.setText(comentarioDoctorList.get(position).getUsuario());
         holder.fecha.setText(comentarioDoctorList.get(position).getFecha());
-
+        holder.calificacion.setRating(3);
         //holder.calificacion.setRating(Float.parseFloat(comentarioDoctorList.get(position).getCalificacion()));
-        Toast.makeText(context, " cal " + holder.calificacion, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(context, " cal " + holder.calificacion, Toast.LENGTH_SHORT).show();
 
     }
 
