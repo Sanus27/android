@@ -8,4 +8,6 @@ public interface CreateaccountInteractor {
 
     void onClickSignIn();
     void createUserWithEmailAndPasswordComplete(Task<AuthResult> task);
+
+    void validateButtonEnable();
 }

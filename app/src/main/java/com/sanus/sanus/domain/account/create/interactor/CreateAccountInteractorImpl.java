@@ -60,6 +60,15 @@ public class CreateAccountInteractorImpl implements CreateaccountInteractor {
         }
     }
 
+    @Override
+    public void validateButtonEnable() {
+        if(presenter.getEmail().matches(RegexUtils.emailPattern()) && presenter.getPassword().length() > 6){
+            presenter.enableButton();
+            return;
+        }
+        presenter.disableButton();
+    }
+
     private void showLoading() {
 
         loading = presenter.getLoading();

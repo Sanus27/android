@@ -9,6 +9,8 @@ public interface LoginView {
 
     void showMessage(int msg);
     void signInWithEmailAndPassword();
+    void enableButton();
+    void disableButton();
 
     void goMain();
 

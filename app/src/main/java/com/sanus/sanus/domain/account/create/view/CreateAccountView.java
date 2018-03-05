@@ -11,6 +11,9 @@ public interface CreateAccountView {
     void goCompleteAccount();
     void createUserWithEmailAndPassword();
 
+    void enableButton();
+    void disableButton();
+
     ProgressDialog getLoading();
 
 

@@ -38,6 +38,16 @@ public class LoginPresenterImpl implements LoginPresenter {
     }
 
     @Override
+    public void enableButton() {
+        view.enableButton();
+    }
+
+    @Override
+    public void disableButton() {
+        view.disableButton();
+    }
+
+    @Override
     public void goMain() {
         view.goMain();
     }
@@ -55,5 +65,10 @@ public class LoginPresenterImpl implements LoginPresenter {
     @Override
     public void signInWithEmailAndPasswordComplete(Task<AuthResult> task) {
         interactor.signInWithEmailAndPasswordComplete(task);
+    }
+
+    @Override
+    public void validateButtonEnable() {
+        interactor.validateButtonEnable();
     }
 }

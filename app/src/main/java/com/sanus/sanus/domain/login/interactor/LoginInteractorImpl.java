@@ -19,33 +19,7 @@ public class LoginInteractorImpl implements LoginInteractor {
     @Override
     public void onClickLogin() {
 
-        if(presenter.getEmail().isEmpty() && !presenter.getPassword().isEmpty()){
-            presenter.showMessage(R.string.empty_email);
-            return;
-        }
-
-        if(!presenter.getEmail().isEmpty() && presenter.getPassword().isEmpty()){
-            presenter.showMessage(R.string.empty_password);
-            return;
-        }
-
-        if (presenter.getEmail().isEmpty() && presenter.getPassword().isEmpty()){
-            presenter.showMessage(R.string.empty_email_password);
-            return;
-        }
-
-        if (!presenter.getEmail().matches(RegexUtils.emailPattern())) {
-            presenter.showMessage(R.string.error_invalid_email);
-            return;
-        }
-
-        if(presenter.getPassword().length() < 6){
-            presenter.showMessage(R.string.length_password);
-            return;
-        }
-
         showLoading();
-
         presenter.signInWithEmailAndPassword();
 
     }
@@ -60,6 +34,15 @@ public class LoginInteractorImpl implements LoginInteractor {
         } else {
             presenter.goMain();
         }
+    }
+
+    @Override
+    public void validateButtonEnable() {
+        if(presenter.getEmail().matches(RegexUtils.emailPattern()) && presenter.getPassword().length() > 6){
+            presenter.enableButton();
+            return;
+        }
+        presenter.disableButton();
     }
 
     private void showLoading() {

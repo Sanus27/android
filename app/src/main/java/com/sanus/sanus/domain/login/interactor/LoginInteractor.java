@@ -7,4 +7,6 @@ public interface LoginInteractor {
 
     void onClickLogin();
     void signInWithEmailAndPasswordComplete(Task<AuthResult> task);
+
+    void validateButtonEnable();
 }

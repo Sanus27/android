@@ -9,4 +9,5 @@ public interface CreateAccountPresenter extends CreateAccountView {
     void onClickSignIn();
     void createUserWithEmailAndPasswordComplete(Task<AuthResult> task);
 
+    void validateButtonEnable();
 }

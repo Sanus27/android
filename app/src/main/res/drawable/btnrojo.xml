@@ -1,14 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
-    <solid android:color="@color/btnGoogle"/>
 
-    <stroke android:width="3dp"
-        android:color="@color/btnGoogle"/>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:state_pressed="true" >
+        <shape android:shape="rectangle"  >
+            <corners android:radius="10dip" />
+            <solid android:color="@color/btnGoogle"/>
+            <stroke android:width="1dip" android:color="@color/btnGoogle" />
+        </shape>
+    </item>
+    <item android:state_enabled="false">
+        <shape android:shape="rectangle"  >
+            <corners android:radius="10dip" />
+            <solid android:color="@color/colorGrey500"/>
+            <stroke android:width="1dip" android:color="@color/colorGrey500" />
+        </shape>
+    </item>
+    <item android:state_focused="true">
+        <shape android:shape="rectangle"  >
+            <corners android:radius="10dip" />
+            <solid android:color="@color/btnGoogle"/>
+            <stroke android:width="1dip" android:color="@color/btnGoogle" />
+        </shape>
+    </item>
+    <item >
+        <shape android:shape="rectangle"  >
+            <corners android:radius="10dip" />
+            <solid android:color="@color/btnGoogle"/>
+            <stroke android:width="1dip" android:color="@color/btnGoogle" />
+        </shape>
+    </item>
 
-    <padding android:left="1dp"
-        android:top="1dp"
-        android:right="1dp"
-        android:bottom="1dp"/>
-
-    <corners android:radius="20px"/>
-</shape>
+</selector>

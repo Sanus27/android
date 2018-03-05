@@ -56,4 +56,19 @@ public class CreateAccountPresenterImpl implements CreateAccountPresenter {
     public void createUserWithEmailAndPasswordComplete(Task<AuthResult> task) {
         interactor.createUserWithEmailAndPasswordComplete(task);
     }
+
+    @Override
+    public void validateButtonEnable() {
+        interactor.validateButtonEnable();
+    }
+
+    @Override
+    public void enableButton() {
+        view.enableButton();
+    }
+
+    @Override
+    public void disableButton() {
+        view.disableButton();
+    }
 }

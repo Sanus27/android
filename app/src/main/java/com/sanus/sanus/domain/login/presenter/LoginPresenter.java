@@ -9,4 +9,6 @@ public interface LoginPresenter extends LoginView{
 
     void onClickLogin();
     void signInWithEmailAndPasswordComplete(Task<AuthResult> task);
+
+    void validateButtonEnable();
 }
