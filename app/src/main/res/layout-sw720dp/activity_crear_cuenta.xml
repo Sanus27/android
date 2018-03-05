@@ -7,7 +7,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="450dp"
         android:background="@drawable/creacuenta"
         android:contentDescription="@string/app_name" />
 
@@ -16,8 +16,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingEnd="40dp"
-        android:paddingStart="40dp"
+        android:paddingEnd="80dp"
+        android:paddingStart="80dp"
         android:paddingTop="20dp">
 
         <TextView
@@ -45,7 +45,8 @@
                 android:maxLines="1"
                 android:paddingEnd="15dp"
                 android:paddingStart="15dp"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:textSize="20sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -68,15 +69,16 @@
                     android:maxLines="1"
                     android:paddingEnd="15dp"
                     android:paddingStart="15dp"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/showPassword"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="7dp"
-                    android:textColor="@color/btnfacebook"
-                    android:text="@string/show_password" />
+                    android:padding="10dp"
+                    android:text="@string/show_password"
+                    android:textColor="@color/btnfacebook" />
             </LinearLayout>
 
             <Button

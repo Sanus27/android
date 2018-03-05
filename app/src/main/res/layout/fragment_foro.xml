@@ -46,7 +46,7 @@
                     android:id="@+id/buscador"
                     android:layout_width="300dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/btnredondo"
+                    android:background="@drawable/btnround"
                     android:gravity="center"
                     android:inputType="text"
                     android:queryHint="¿Qué síntomas tiene?"/>

@@ -10,5 +10,7 @@
     <color name="btnGoogle">#ff0000</color>
     <color name="btnfacebook">#3B3CA9</color>
 
+    <color name="background_customer">#F6F7FB</color>
+
 
 </resources>

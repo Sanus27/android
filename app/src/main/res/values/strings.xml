@@ -16,6 +16,8 @@
     <string name="repetir_contrasenia">Repetir contraseña</string>
     <string name="password_corta">Contraseña corta</string>
     <string name="autenticacion_fallida">Correo y contraseña no validos</string>
+    <string name="show_password">Mostrar</string>
+    <string name="hide_password">Ocultar</string>
 
     <string name="button_accept">Aceptar</string>
     <string name="button_cancel">Cancelar</string>

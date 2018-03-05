@@ -58,21 +58,6 @@ public class CreateAccountActivity extends AppCompatActivity implements CreateAc
                 presenter.onClickSignIn();
             }
         });
-
-        Button btnLogin = findViewById(R.id.btnIrInicio);
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                login();
-            }
-        });
-    }
-
-
-    private void login() {
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-        finish();
     }
 
     @Override

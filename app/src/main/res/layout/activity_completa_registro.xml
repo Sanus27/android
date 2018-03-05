@@ -68,7 +68,7 @@
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_marginTop="165dp"
-            android:background="@drawable/btnredondo"
+            android:background="@drawable/btnround"
             android:orientation="vertical">
 
             <TextView
@@ -98,7 +98,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/btnredondo"
+                android:background="@drawable/btnround"
                 android:gravity="center"
                 android:hint="* Nombre(s) :"
                 android:imeActionId="6"
@@ -113,7 +113,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/btnredondo"
+                android:background="@drawable/btnround"
                 android:gravity="center"
                 android:hint="* Apellido(s):"
                 android:imeActionId="6"
