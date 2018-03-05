@@ -6,9 +6,9 @@
 
     <color name="text">#FFFFFF</color>
     <color name="black">#000</color>
-    <color name="btnCrea">#FF6400</color>
-    <color name="btnGoogle">#ff0000</color>
-    <color name="btnfacebook">#3B3CA9</color>
+    <color name="btnCrea">#ed782d</color>
+    <color name="btnGoogle">#EF2219</color>
+    <color name="btnfacebook">#4260B4</color>
 
     <color name="background_customer">#F6F7FB</color>
 

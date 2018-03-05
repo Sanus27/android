@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +21,7 @@ import com.sanus.sanus.domain.login.presenter.LoginPresenter;
 import com.sanus.sanus.domain.login.presenter.LoginPresenterImpl;
 import com.sanus.sanus.domain.main.view.MainActivity;
 import com.sanus.sanus.utils.alert.AlertUtils;
+import com.sanus.sanus.utils.keyboard.KeyboardUtil;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
 
@@ -72,6 +74,12 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             finish();
         }
 
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        KeyboardUtil.hide(this);
+        return true;
     }
 
     @Override
