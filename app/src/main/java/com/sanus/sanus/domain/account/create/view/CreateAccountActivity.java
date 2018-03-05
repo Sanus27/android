@@ -5,9 +5,12 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,12 +23,15 @@ import com.sanus.sanus.domain.account.create.presenter.CreateAccountPresenter;
 import com.sanus.sanus.domain.account.create.presenter.CreateAccountPresenterImpl;
 import com.sanus.sanus.domain.login.view.LoginActivity;
 import com.sanus.sanus.utils.alert.AlertUtils;
+import com.sanus.sanus.utils.keyboard.KeyboardUtil;
 
 public class CreateAccountActivity extends AppCompatActivity implements CreateAccountView {
 
     private CreateAccountPresenter presenter;
     private EditText inputEmail, inputPassword;
     private FirebaseAuth auth;
+    private TextView showPassword;
+    private boolean flagPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +47,7 @@ public class CreateAccountActivity extends AppCompatActivity implements CreateAc
 
         if (presenter==null){
             presenter= new CreateAccountPresenterImpl(this);
+            flagPassword = false;
         }
         auth = FirebaseAuth.getInstance();
     }
@@ -49,15 +56,33 @@ public class CreateAccountActivity extends AppCompatActivity implements CreateAc
 
         inputEmail = findViewById(R.id.edCorreoE);
         inputPassword = findViewById(R.id.edContrasenia);
+        showPassword = findViewById(R.id.showPassword);
+        showPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                flagPassword = !flagPassword;
+                if (flagPassword) {
+                    showPassword.setText(R.string.hide_password);
+                    inputPassword.setInputType(InputType.TYPE_CLASS_TEXT);
+                } else {
+                    showPassword.setText(R.string.show_password);
+                    inputPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                }
+            }
+        });
         Button btnSignUp = findViewById(R.id.btnCrearCuenta);
-
-
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 presenter.onClickSignIn();
             }
         });
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        KeyboardUtil.hide(this);
+        return true;
     }
 
     @Override
