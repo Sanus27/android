@@ -53,6 +53,11 @@ public class LoginPresenterImpl implements LoginPresenter {
     }
 
     @Override
+    public void goCompleteRegister() {
+        view.goCompleteRegister();
+    }
+
+    @Override
     public ProgressDialog getLoading() {
         return view.getLoading();
     }

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.sanus.sanus.R;
+import com.sanus.sanus.domain.account.complete.view.CompleteRegisterActivity;
 import com.sanus.sanus.domain.login.view.LoginActivity;
 import com.sanus.sanus.domain.main.view.MainActivity;
 import com.sanus.sanus.domain.splash.presenter.SplashPresenter;
@@ -43,5 +44,14 @@ public class SplashActivity extends AppCompatActivity implements SplashView {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
+    }
+
+    @Override
+    public void goCompleteRegister() {
+        Intent intent = new Intent(this, CompleteRegisterActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
+
     }
 }

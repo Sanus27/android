@@ -82,6 +82,7 @@ public class CompleteRegisterInteractorImpl implements CompleteRegisterInteracto
             userMap.put("apellido", apelli);
             userMap.put("edad", edaD);
             userMap.put("sexo", sex);
+            userMap.put("completo", "finalizado");
             userMap.put("avatar", "avatar.png");
 
             mFirestore.collection("usuarios").document(id).set(userMap).addOnSuccessListener(new OnSuccessListener<Void>() {

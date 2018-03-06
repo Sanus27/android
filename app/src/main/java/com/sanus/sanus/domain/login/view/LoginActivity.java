@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.sanus.sanus.R;
+import com.sanus.sanus.domain.account.complete.view.CompleteRegisterActivity;
 import com.sanus.sanus.domain.account.create.view.CreateAccountActivity;
 import com.sanus.sanus.domain.login.presenter.LoginPresenter;
 import com.sanus.sanus.domain.login.presenter.LoginPresenterImpl;
@@ -158,6 +159,14 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @Override
     public void goMain() {
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void goCompleteRegister() {
+        Intent intent = new Intent(this, CompleteRegisterActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
     }

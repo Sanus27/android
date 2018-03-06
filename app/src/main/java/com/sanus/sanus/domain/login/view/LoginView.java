@@ -13,6 +13,7 @@ public interface LoginView {
     void disableButton();
 
     void goMain();
+    void goCompleteRegister();
 
     ProgressDialog getLoading();
 

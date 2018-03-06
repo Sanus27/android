@@ -28,4 +28,9 @@ public class SplashPresenterImpl implements SplashPresenter {
     public void goMain() {
         view.goMain();
     }
+
+    @Override
+    public void goCompleteRegister() {
+        view.goCompleteRegister();
+    }
 }
