@@ -8,6 +8,7 @@ public interface LoginView {
     String getPassword();
 
     void showMessage(int msg);
+    void showAlertRegister();
     void signInWithEmailAndPassword();
     void enableButton();
     void disableButton();

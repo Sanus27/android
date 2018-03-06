@@ -10,8 +10,10 @@ import com.sanus.sanus.domain.login.view.LoginActivity;
 import com.sanus.sanus.domain.main.view.MainActivity;
 import com.sanus.sanus.domain.splash.presenter.SplashPresenter;
 import com.sanus.sanus.domain.splash.presenter.SplashPresenterImpl;
+import com.sanus.sanus.utils.alert.AlertUtils;
+import com.sanus.sanus.utils.alert.CallbackAlert;
 
-public class SplashActivity extends AppCompatActivity implements SplashView {
+public class SplashActivity extends AppCompatActivity implements SplashView, CallbackAlert {
 
     private SplashPresenter presenter;
 
@@ -53,5 +55,26 @@ public class SplashActivity extends AppCompatActivity implements SplashView {
         startActivity(intent);
         finish();
 
+    }
+
+    @Override
+    public void showAlertRegister() {
+        AlertUtils alertUtils = new AlertUtils(this);
+        alertUtils.registerAlert(this, getString(R.string.complete_register));
+    }
+
+    @Override
+    public void closeApp() {
+        finish();
+    }
+
+    @Override
+    public void acceptAlert() {
+        presenter.acceptAlert();
+    }
+
+    @Override
+    public void cancelAlert() {
+        presenter.cancelAlert();
     }
 }

@@ -19,6 +19,7 @@ public class LoginInteractorImpl implements LoginInteractor {
     private LoginPresenter presenter;
     private ProgressDialog loading;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private String userIdNow;
 
     public LoginInteractorImpl(LoginPresenter presenter) {
         this.presenter = presenter;
@@ -39,35 +40,46 @@ public class LoginInteractorImpl implements LoginInteractor {
 
         if (!task.isSuccessful()) {
             presenter.showMessage(R.string.autenticacion_fallida);
-        } else {
-
-            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            String userIdNow = user.getUid();
-
-            DocumentReference usuarios = db.collection("usuarios").document(userIdNow);
-            usuarios.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                @Override
-                public void onSuccess(DocumentSnapshot documentSnapshot) {
-
-                    UserEntity complete = documentSnapshot.toObject(UserEntity.class);
-
-                    if (complete.completo == null) {
-                        presenter.goCompleteRegister();
-                        return;
-                    }
-                    if (complete.completo.equals("incompleto") || complete.completo.isEmpty()) {
-                        presenter.goCompleteRegister();
-                        return;
-                    }
-                    presenter.goMain();
-                }
-            });
+            return;
         }
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+
+            userIdNow = user.getUid();
+            DocumentReference usuarios = db.collection("usuarios").document(userIdNow);
+            if (usuarios.get().isSuccessful()) {
+                usuarios.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+
+                        UserEntity complete = documentSnapshot.toObject(UserEntity.class);
+
+                        if (complete.completo == null) {
+                            presenter.showAlertRegister();
+                            return;
+                        }
+                        if (complete.completo.equals("0") || complete.completo.isEmpty()) {
+                            presenter.showAlertRegister();
+                            return;
+                        }
+                        presenter.goMain();
+                    }
+                });
+
+                return;
+            }
+            presenter.showAlertRegister();
+            return;
+        }
+
+        presenter.showMessage(R.string.error);
+
     }
 
     @Override
     public void validateButtonEnable() {
-        if(presenter.getEmail().matches(RegexUtils.emailPattern()) && presenter.getPassword().length() > 6){
+        if (presenter.getEmail().matches(RegexUtils.emailPattern()) && presenter.getPassword().length() > 6) {
             presenter.enableButton();
             return;
         }
@@ -86,5 +98,15 @@ public class LoginInteractorImpl implements LoginInteractor {
         if (loading != null) {
             loading.dismiss();
         }
+    }
+
+    @Override
+    public void acceptAlert() {
+        presenter.goCompleteRegister();
+    }
+
+    @Override
+    public void cancelAlert() {
+        FirebaseAuth.getInstance().signOut();
     }
 }

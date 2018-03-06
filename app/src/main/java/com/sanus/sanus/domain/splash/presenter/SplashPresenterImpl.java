@@ -33,4 +33,24 @@ public class SplashPresenterImpl implements SplashPresenter {
     public void goCompleteRegister() {
         view.goCompleteRegister();
     }
+
+    @Override
+    public void showAlertRegister() {
+        view.showAlertRegister();
+    }
+
+    @Override
+    public void closeApp() {
+        view.closeApp();
+    }
+
+    @Override
+    public void acceptAlert() {
+        interactor.acceptAlert();
+    }
+
+    @Override
+    public void cancelAlert() {
+        interactor.cancelAlert();
+    }
 }

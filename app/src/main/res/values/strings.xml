@@ -21,6 +21,9 @@
 
     <string name="button_accept">Aceptar</string>
     <string name="button_cancel">Cancelar</string>
+    <string name="button_exit">Salir</string>
+    <string name="button_continue">Continuar</string>
+
 
 
     <string name="prompt_email">Correo electrónico</string>
@@ -41,6 +44,7 @@
     <string name="authenticate_failed">Autenticacion fallida</string>
     <string name="logout_msg">¿Cerrar sesión?</string>
     <string name="logout_text">Cerrar sesión</string>
+    <string name="complete_register">Para completar el registro necesitamos algunos datos.</string>
 
     <string name="uploading">Subiendo</string>
     <string name="upload_complete">Completo</string>

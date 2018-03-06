@@ -33,6 +33,11 @@ public class LoginPresenterImpl implements LoginPresenter {
     }
 
     @Override
+    public void showAlertRegister() {
+        view.showAlertRegister();
+    }
+
+    @Override
     public void signInWithEmailAndPassword() {
         view.signInWithEmailAndPassword();
     }
@@ -75,5 +80,15 @@ public class LoginPresenterImpl implements LoginPresenter {
     @Override
     public void validateButtonEnable() {
         interactor.validateButtonEnable();
+    }
+
+    @Override
+    public void acceptAlert() {
+        interactor.acceptAlert();
+    }
+
+    @Override
+    public void cancelAlert() {
+        interactor.cancelAlert();
     }
 }

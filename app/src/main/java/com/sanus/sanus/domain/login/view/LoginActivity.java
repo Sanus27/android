@@ -24,9 +24,10 @@ import com.sanus.sanus.domain.login.presenter.LoginPresenter;
 import com.sanus.sanus.domain.login.presenter.LoginPresenterImpl;
 import com.sanus.sanus.domain.main.view.MainActivity;
 import com.sanus.sanus.utils.alert.AlertUtils;
+import com.sanus.sanus.utils.alert.CallbackAlert;
 import com.sanus.sanus.utils.keyboard.KeyboardUtil;
 
-public class LoginActivity extends AppCompatActivity implements LoginView {
+public class LoginActivity extends AppCompatActivity implements LoginView, CallbackAlert {
 
     private LoginPresenter presenter;
     private EditText inputEmail, inputPassword;
@@ -136,6 +137,12 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     }
 
     @Override
+    public void showAlertRegister() {
+        AlertUtils alertUtils = new AlertUtils(this);
+        alertUtils.registerAlert(this, getString(R.string.complete_register));
+    }
+
+    @Override
     public void signInWithEmailAndPassword() {
         auth.signInWithEmailAndPassword(getEmail(), getPassword())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -174,6 +181,16 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @Override
     public ProgressDialog getLoading() {
         return AlertUtils.getLoading(this);
+    }
+
+    @Override
+    public void acceptAlert() {
+        presenter.acceptAlert();
+    }
+
+    @Override
+    public void cancelAlert() {
+        presenter.cancelAlert();
     }
 
 

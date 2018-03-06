@@ -79,7 +79,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"
                 android:paddingBottom="16dp"
-                android:text="Para completar el registro necesitamos algunos datos." />
+                android:text="@string/complete_register" />
 
             <TextView
                 android:id="@+id/tvTitleObligatorio"
