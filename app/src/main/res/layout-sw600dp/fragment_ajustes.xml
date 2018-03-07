@@ -33,7 +33,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="160dp"
+            android:layout_marginTop="260dp"
             android:paddingEnd="30dp"
             android:paddingStart="30dp">
 
@@ -47,8 +47,8 @@
 
                 <ImageView
                     android:id="@+id/imgAvatar"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:contentDescription="@string/app_name"
                     app:srcCompat="@drawable/user" />
 
@@ -58,7 +58,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="@string/app_name" />
+                    android:text="@string/app_name"
+                    android:textSize="20sp"/>
 
             </LinearLayout>
 
@@ -73,8 +74,8 @@
                 android:padding="10dp">
 
                 <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:contentDescription="@string/app_name"
                     android:src="@drawable/ic_cerrar" />
 
@@ -83,7 +84,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="@string/logout_text" />
+                    android:text="@string/logout_text"
+                    android:textSize="20sp"/>
             </LinearLayout>
 
         </RelativeLayout>

@@ -33,9 +33,9 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="160dp"
-            android:paddingEnd="30dp"
-            android:paddingStart="30dp">
+            android:layout_marginTop="360dp"
+            android:paddingEnd="60dp"
+            android:paddingStart="60dp">
 
             <LinearLayout
                 android:id="@+id/profile"
@@ -47,8 +47,8 @@
 
                 <ImageView
                     android:id="@+id/imgAvatar"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:contentDescription="@string/app_name"
                     app:srcCompat="@drawable/user" />
 
@@ -58,7 +58,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="@string/app_name" />
+                    android:text="@string/app_name"
+                    android:textSize="25sp"/>
 
             </LinearLayout>
 
@@ -73,8 +74,8 @@
                 android:padding="10dp">
 
                 <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:contentDescription="@string/app_name"
                     android:src="@drawable/ic_cerrar" />
 
@@ -83,7 +84,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="@string/logout_text" />
+                    android:text="@string/logout_text"
+                    android:textSize="25sp"/>
             </LinearLayout>
 
         </RelativeLayout>
