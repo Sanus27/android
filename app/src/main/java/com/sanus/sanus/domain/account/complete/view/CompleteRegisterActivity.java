@@ -13,6 +13,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -26,15 +28,17 @@ import com.sanus.sanus.domain.account.complete.presenter.CompleteRegisterPresent
 import com.sanus.sanus.domain.account.complete.presenter.CompleteRegisterPresenterImpl;
 import com.sanus.sanus.domain.main.view.MainActivity;
 import com.sanus.sanus.utils.alert.AlertUtils;
+import com.sanus.sanus.utils.keyboard.KeyboardUtil;
 
 
 public class CompleteRegisterActivity extends AppCompatActivity implements CompleteRegisterView {
     private CompleteRegisterPresenter presenter;
 
-    EditText nombre, apellido;
-    Button masculino, femenino, guardar;
-    Spinner spinnerEdad;
-    ImageView imgavatar, imgCamara, imgSave;
+    private EditText nombre, apellido;
+    private Button masculino, femenino, guardar;
+    private Spinner spinnerEdad;
+    private ImageView imgavatar, imgCamara;
+    private RelativeLayout rlHeader;
 
     private String edadPosition;
 
@@ -58,14 +62,14 @@ public class CompleteRegisterActivity extends AppCompatActivity implements Compl
         femenino = findViewById(R.id.btnFemenino);
         spinnerEdad = findViewById(R.id.spinnerEdad);
         guardar = findViewById(R.id.btnGuardar);
+        rlHeader = findViewById(R.id.rlHeader);
 
         imgavatar = findViewById(R.id.imgHeader);
         imgCamara = findViewById(R.id.imgCamera);
-        imgSave = findViewById(R.id.imgSave);
 
         items = getResources().getStringArray(R.array.Edad);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item, items);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_dropdown_item, items);
+        adapter.setDropDownViewResource(R.layout.list_item_spinner);
         spinnerEdad.setAdapter(adapter);
         spinnerEdad.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -97,13 +101,6 @@ public class CompleteRegisterActivity extends AppCompatActivity implements Compl
             }
         });
 
-        imgSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                presenter.uploadFile();
-            }
-        });
-
         //guardando datos en firestore
         guardar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,6 +108,17 @@ public class CompleteRegisterActivity extends AppCompatActivity implements Compl
                 presenter.onClickSaveData();
             }
         });
+
+        rlHeader.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                hideKeyboard();
+            }
+        });
+    }
+
+    private void hideKeyboard() {
+        KeyboardUtil.hide(this);
     }
 
     private void setUpVariable() {
@@ -135,17 +143,19 @@ public class CompleteRegisterActivity extends AppCompatActivity implements Compl
     @Override
     public void selectMale() {
         masculino.setBackgroundColor(getResources().getColor(R.color.black));
-        masculino.setTextColor(getResources().getColor(R.color.text));
-        femenino.setBackgroundColor(getResources().getColor(R.color.text));
+        masculino.setTextColor(getResources().getColor(R.color.white));
+        femenino.setBackgroundColor(getResources().getColor(R.color.white));
         femenino.setTextColor(getResources().getColor(R.color.black));
+
     }
 
     @Override
     public void selectFemale() {
         femenino.setBackgroundColor(getResources().getColor(R.color.black));
-        femenino.setTextColor(getResources().getColor(R.color.text));
-        masculino.setBackgroundColor(getResources().getColor(R.color.text));
+        femenino.setTextColor(getResources().getColor(R.color.white));
+        masculino.setBackgroundColor(getResources().getColor(R.color.white));
         masculino.setTextColor(getResources().getColor(R.color.black));
+
     }
 
     @Override

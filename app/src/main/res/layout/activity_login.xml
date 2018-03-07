@@ -71,8 +71,8 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/btnazul"
-                android:text="@string/action_sign_in"
                 android:enabled="false"
+                android:text="@string/action_sign_in"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="bold" />
 
@@ -87,17 +87,20 @@
                 android:text="@string/action_sign_in_short"
                 android:textColor="@color/colorPrimary" />
 
-            <RelativeLayout
-                android:layout_width="fill_parent"
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="16dp"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/btnGoogle"
                     style="?android:textAppearanceSmall"
-                    android:layout_width="110dp"
-                    android:layout_height="43dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="50"
                     android:background="@drawable/btnrojo"
                     android:text="@string/action_google"
                     android:textColor="@color/colorPrimary" />
@@ -105,14 +108,14 @@
                 <Button
                     android:id="@+id/btnFacebook"
                     style="?android:textAppearanceSmall"
-                    android:layout_width="110dp"
-                    android:layout_height="43dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentTop="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="50"
                     android:background="@drawable/btnazulfacebook"
                     android:text="@string/action_facebook"
                     android:textColor="@color/colorPrimary" />
-            </RelativeLayout>
+            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>

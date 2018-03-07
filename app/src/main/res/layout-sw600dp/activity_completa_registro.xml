@@ -33,19 +33,19 @@
 
         <ImageView
             android:id="@+id/imgProfile"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="55dp"
+            android:layout_marginTop="85dp"
             android:contentDescription="@string/app_name"
             app:srcCompat="@drawable/user" />
 
         <ImageView
             android:id="@+id/imgCamera"
-            android:layout_width="60dp"
-            android:layout_height="30dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="130dp"
+            android:layout_marginTop="190dp"
             android:contentDescription="@string/app_name"
             android:src="@drawable/ic_camera" />
 
@@ -54,13 +54,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:layout_marginEnd="@dimen/activity_horizontal_margin"
-            android:layout_marginStart="@dimen/activity_horizontal_margin"
-            android:layout_marginTop="165dp"
+            android:layout_marginBottom="80dp"
+            android:layout_marginEnd="80dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="265dp"
             android:background="@drawable/backgroundround"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="32dp">
 
             <TextView
                 android:id="@+id/tvTitle"
@@ -68,19 +68,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:paddingBottom="16dp"
-                android:text="@string/complete_register" />
+                android:text="@string/complete_register"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/tvTitleObligatorio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingBottom="16dp"
-                android:text="@string/required_data" />
+                android:text="@string/required_data"
+                android:textSize="17sp" />
 
             <EditText
                 android:id="@+id/edNombre"
                 android:layout_width="match_parent"
-                android:layout_height="43dp"
+                android:layout_height="45dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/btnround"
                 android:hint="@string/required_name"
@@ -89,12 +91,13 @@
                 android:maxLines="1"
                 android:paddingEnd="8dp"
                 android:paddingStart="8dp"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:textSize="17sp" />
 
             <EditText
                 android:id="@+id/edApellido"
                 android:layout_width="match_parent"
-                android:layout_height="43dp"
+                android:layout_height="45dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/btnround"
@@ -104,7 +107,8 @@
                 android:maxLines="1"
                 android:paddingEnd="8dp"
                 android:paddingStart="8dp"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:textSize="17sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -120,7 +124,8 @@
                     android:layout_weight="50"
                     android:background="@android:color/black"
                     android:text="@string/gender_male"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:textSize="17sp" />
 
                 <Button
                     android:id="@+id/btnFemenino"
@@ -129,14 +134,16 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="50"
                     android:background="@color/white"
-                    android:text="@string/gender_female" />
+                    android:text="@string/gender_female"
+                    android:textSize="17sp" />
             </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/age_select" />
+                android:text="@string/age_select"
+                android:textSize="17sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -148,7 +155,8 @@
                 <Spinner
                     android:id="@+id/spinnerEdad"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp" />
+                    android:layout_height="45dp"
+                    android:textSize="17sp" />
             </LinearLayout>
 
 
@@ -163,6 +171,7 @@
                 android:enabled="false"
                 android:text="@string/button_save"
                 android:textColor="@color/colorPrimary"
+                android:textSize="17sp"
                 android:textStyle="bold" />
 
 

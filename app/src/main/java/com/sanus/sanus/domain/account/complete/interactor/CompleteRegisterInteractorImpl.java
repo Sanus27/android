@@ -51,11 +51,13 @@ public class CompleteRegisterInteractorImpl implements CompleteRegisterInteracto
 
     @Override
     public void onClickGenderMale() {
+        presenter.selectMale();
         sexo(1);
     }
 
     @Override
     public void onClickGenderFemale() {
+        presenter.selectFemale();
         sexo(2);
     }
 
@@ -155,11 +157,11 @@ public class CompleteRegisterInteractorImpl implements CompleteRegisterInteracto
     private void sexo(int num){
         if(num==1){
             sex = "Masculino";
-            presenter.selectMale();
+
         }
         if(num==2){
             sex= "Femenino";
-            presenter.selectFemale();
+
         }
     }
 }

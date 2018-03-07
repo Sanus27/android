@@ -19,7 +19,6 @@ public class LoginInteractorImpl implements LoginInteractor {
     private LoginPresenter presenter;
     private ProgressDialog loading;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private String userIdNow;
 
     public LoginInteractorImpl(LoginPresenter presenter) {
         this.presenter = presenter;
@@ -46,7 +45,7 @@ public class LoginInteractorImpl implements LoginInteractor {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
 
-            userIdNow = user.getUid();
+            String userIdNow = user.getUid();
             DocumentReference usuarios = db.collection("usuarios").document(userIdNow);
             if (usuarios.get().isSuccessful()) {
                 usuarios.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {

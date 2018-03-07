@@ -78,7 +78,7 @@ public class CompleteRegisterPresenterImpl implements CompleteRegisterPresenter 
 
     @Override
     public void selectFemale() {
-        view.selectMale();
+        view.selectFemale();
     }
 
     @Override

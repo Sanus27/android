@@ -4,8 +4,8 @@
     <color name="colorPrimaryDark">#0094EA</color>
     <color name="colorAccent">#C1D1FF</color>
 
-    <color name="text">#FFFFFF</color>
-    <color name="black">#000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
     <color name="btnCrea">#ed782d</color>
     <color name="btnGoogle">#EF2219</color>
     <color name="btnfacebook">#4260B4</color>

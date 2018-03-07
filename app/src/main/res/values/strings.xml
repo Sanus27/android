@@ -23,6 +23,15 @@
     <string name="button_cancel">Cancelar</string>
     <string name="button_exit">Salir</string>
     <string name="button_continue">Continuar</string>
+    <string name="button_save">Guardar</string>
+    <string name="gender_male">Masculino</string>
+    <string name="gender_female">Femenino</string>
+
+    <string name="age_select">Selecciona una edad</string>
+    <string name="required_data">* Los datos son obligatorios.</string>
+    <string name="required_name">Nombre(s)* :</string>
+    <string name="required_last_name">Apellido(s)*:</string>
+
 
 
 
