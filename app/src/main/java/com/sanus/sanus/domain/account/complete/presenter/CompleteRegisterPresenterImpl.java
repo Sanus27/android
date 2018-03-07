@@ -1,16 +1,17 @@
 package com.sanus.sanus.domain.account.complete.presenter;
 
 import android.app.ProgressDialog;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
 
-import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.sanus.sanus.domain.account.complete.interactor.CompleteRegisterInteractor;
 import com.sanus.sanus.domain.account.complete.interactor.CompleteRegisterInteractorImpl;
 import com.sanus.sanus.domain.account.complete.view.CompleteRegisterView;
+
+import java.util.ArrayList;
 
 public class CompleteRegisterPresenterImpl implements CompleteRegisterPresenter {
     private CompleteRegisterInteractor interactor;
@@ -47,8 +48,13 @@ public class CompleteRegisterPresenterImpl implements CompleteRegisterPresenter 
     }
 
     @Override
-    public void uploadFile() {
-        interactor.uploadFile();
+    public void validateButtonEnable() {
+        interactor.validateButtonEnable();
+    }
+
+    @Override
+    public void setUpSpinner() {
+        interactor.setUpSpinner();
     }
 
     @Override
@@ -87,8 +93,8 @@ public class CompleteRegisterPresenterImpl implements CompleteRegisterPresenter 
     }
 
     @Override
-    public void fileStorageReference(StorageReference fileRef, Uri filePath) {
-        view.fileStorageReference(fileRef, filePath);
+    public void setListSpinner(ArrayList<String> ageList) {
+        view.setListSpinner(ageList);
     }
 
     @Override
@@ -107,6 +113,16 @@ public class CompleteRegisterPresenterImpl implements CompleteRegisterPresenter 
     }
 
     @Override
+    public void enableButton() {
+        view.enableButton();
+    }
+
+    @Override
+    public void disableButton() {
+        view.disableButton();
+    }
+
+    @Override
     public void showMessage(int msg) {
         view.showMessage(msg);
     }
@@ -114,6 +130,16 @@ public class CompleteRegisterPresenterImpl implements CompleteRegisterPresenter 
     @Override
     public void goMain() {
         view.goMain();
+    }
+
+    @Override
+    public ContentResolver getContentResolve() {
+        return view.getContentResolve();
+    }
+
+    @Override
+    public void showImage(Bitmap bitmap) {
+        view.showImage(bitmap);
     }
 
     @Override

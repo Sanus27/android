@@ -13,7 +13,9 @@ public interface CompleteRegisterPresenter extends CompleteRegisterView {
     void onClickGenderFemale();
     void onClickImgCamera();
     void onClickSaveData();
-    void uploadFile();
+
+    void validateButtonEnable();
+    void setUpSpinner();
 
     void onSuccess(UploadTask.TaskSnapshot taskSnapshot);
     void onProgress(UploadTask.TaskSnapshot taskSnapshot);

@@ -1,8 +1,10 @@
 package com.sanus.sanus.domain.login.interactor;
 
 import android.app.ProgressDialog;
+import android.support.annotation.NonNull;
+import android.util.Log;
 
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -12,13 +14,13 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.sanus.sanus.R;
 import com.sanus.sanus.domain.login.presenter.LoginPresenter;
-import com.sanus.sanus.domain.splash.interactor.UserEntity;
 import com.sanus.sanus.utils.regex.RegexUtils;
 
 public class LoginInteractorImpl implements LoginInteractor {
     private LoginPresenter presenter;
     private ProgressDialog loading;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private String TAG = this.getClass().getSimpleName();
 
     public LoginInteractorImpl(LoginPresenter presenter) {
         this.presenter = presenter;
@@ -42,37 +44,35 @@ public class LoginInteractorImpl implements LoginInteractor {
             return;
         }
 
+
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
 
             String userIdNow = user.getUid();
             DocumentReference usuarios = db.collection("usuarios").document(userIdNow);
-            if (usuarios.get().isSuccessful()) {
-                usuarios.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-
-                        UserEntity complete = documentSnapshot.toObject(UserEntity.class);
-
-                        if (complete.completo == null) {
+            usuarios.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            presenter.goMain();
+                            Log.d(TAG, "DocumentSnapshot data: " + task.getResult().getData());
+                        } else {
                             presenter.showAlertRegister();
-                            return;
+                            Log.d(TAG, "No such document");
                         }
-                        if (complete.completo.equals("0") || complete.completo.isEmpty()) {
-                            presenter.showAlertRegister();
-                            return;
-                        }
-                        presenter.goMain();
+                    } else {
+                       presenter.showMessage(R.string.error);
+                        Log.d(TAG, "get failed with ", task.getException());
                     }
-                });
-
-                return;
-            }
-            presenter.showAlertRegister();
+                }
+            });
             return;
         }
 
         presenter.showMessage(R.string.error);
+
 
     }
 

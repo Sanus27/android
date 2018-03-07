@@ -45,6 +45,7 @@
     <string name="action_crea_cuenta">Crear cuenta</string>
     <string name="signin_sucess">Registro exitoso</string>
     <string name="signin_error">Error al guardar</string>
+    <string name="photo_error">Error al subir imagen</string>
 
     <string name="empty_email">Ingresa un correo</string>
     <string name="empty_password">Ingresa una contraseña</string>
