@@ -44,7 +44,7 @@ public class SearchInteractorImpl implements SearchInteractor{
                         //busquedaDoctors.add(new BusquedaDoctor(nombre, especialidad).withId(user_id));
                         //https://www.youtube.com/watch?v=kyGVgrLG3KU
                         busquedaDoctors.add(new BusquedaDoctor(nombre, especialidad));
-                        listAuxiliar.add(new BusquedaDoctor(nombre, especialidad));
+                        //listAuxiliar.add(new BusquedaDoctor(nombre, especialidad));
 
                         presenter.setDataAdapter(busquedaDoctors);
 

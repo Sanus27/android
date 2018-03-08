@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.sanus.sanus.domain.configuration.view.AjustesFragment;
 import com.sanus.sanus.domain.main.presenter.MainPresenter;
 import com.sanus.sanus.domain.main.presenter.MainPresenterImpl;
@@ -17,7 +18,7 @@ import com.sanus.sanus.R;
 
 public class MainActivity extends AppCompatActivity implements MainView {
 
-    private BottomNavigationView navigation;
+    private BottomNavigationViewEx navigation;
     private MainPresenter presenter;
 
     @Override
@@ -39,6 +40,10 @@ public class MainActivity extends AppCompatActivity implements MainView {
     private void setUpView() {
 
         navigation = findViewById(R.id.navigation);
+        navigation.enableAnimation(true);
+        navigation.enableShiftingMode(false);
+        navigation.enableItemShiftingMode(false);
+
         setUpBottomNavigationBar();
         
     }

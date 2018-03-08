@@ -21,13 +21,13 @@
         </FrameLayout>
     </LinearLayout>
 
-    <android.support.design.widget.BottomNavigationView
+    <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
         android:id="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/colorAccent"
+        android:background="@color/white"
         app:menu="@menu/navigation"
-        app:itemIconTint="@android:color/black"
-        app:itemTextColor="@android:color/black" />
+        app:itemIconTint="@drawable/bottom_nav_color"
+        app:itemTextColor="@drawable/bottom_nav_color" />
 </RelativeLayout>

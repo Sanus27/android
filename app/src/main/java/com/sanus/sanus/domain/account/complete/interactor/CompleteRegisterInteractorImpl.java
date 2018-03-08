@@ -114,7 +114,6 @@ public class CompleteRegisterInteractorImpl implements CompleteRegisterInteracto
             userEntity.tipo = "Paciente";
             userEntity.sexo = sex;
 
-
            if (imageUri != null) {
                 try {
                     InputStream inputStream = presenter.getContentResolve().openInputStream(imageUri);
@@ -133,7 +132,6 @@ public class CompleteRegisterInteractorImpl implements CompleteRegisterInteracto
                                 userEntity.avatar = "";
                                 Log.e(TAG, "onFailure", exception);
 
-                                //presenter.showMessage("Fallo subir la imagen por favor vuelva a intentar");
                             }
                         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
@@ -151,7 +149,6 @@ public class CompleteRegisterInteractorImpl implements CompleteRegisterInteracto
                 }
 
             } else {
-                //No metio imagen
                 saveUser(userEntity);
             }
 
