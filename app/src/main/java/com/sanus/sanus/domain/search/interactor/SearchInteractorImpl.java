@@ -18,6 +18,8 @@ public class SearchInteractorImpl implements SearchInteractor{
     private final String TAG= this.getClass().getSimpleName();
     private List<BusquedaDoctor> busquedaDoctors =  new ArrayList<>();
     private List<BusquedaDoctor> listAuxiliar = new ArrayList<>();
+    private String nombre;
+    private String especialidad;
 
     public SearchInteractorImpl(SearchPresenter presenter) {
         this.presenter = presenter;
@@ -27,7 +29,7 @@ public class SearchInteractorImpl implements SearchInteractor{
     public void init() {
 
         FirebaseFirestore mFirestore = FirebaseFirestore.getInstance();
-        busquedaDoctors = listAuxiliar;
+
 
         mFirestore.collection("doctores").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -35,17 +37,17 @@ public class SearchInteractorImpl implements SearchInteractor{
                 if (e!=null){
                     Log.d(TAG, "Error: " + e.getMessage());
                 }
+
                 for(DocumentChange doc: documentSnapshots.getDocumentChanges()){
                     if(doc.getType() == DocumentChange.Type.ADDED){
-                        String nombre = doc.getDocument().getString("nombre");
-                        String especialidad = doc.getDocument().getString("especialidad");
+
+                        nombre = doc.getDocument().getString("nombre");
+                        especialidad = doc.getDocument().getString("especialidad");
 
                         //String user_id = doc.getDocument().getId();
                         //busquedaDoctors.add(new BusquedaDoctor(nombre, especialidad).withId(user_id));
-                        //https://www.youtube.com/watch?v=kyGVgrLG3KU
-                        busquedaDoctors.add(new BusquedaDoctor(nombre, especialidad));
-                        //listAuxiliar.add(new BusquedaDoctor(nombre, especialidad));
 
+                        busquedaDoctors.add(new BusquedaDoctor(nombre, especialidad));
                         presenter.setDataAdapter(busquedaDoctors);
 
                     }
@@ -57,14 +59,19 @@ public class SearchInteractorImpl implements SearchInteractor{
     @Override
     public void buscador(String texto) {
 
-        busquedaDoctors.clear();
-        for (int i=0;i<listAuxiliar.size(); i++){
-            if(listAuxiliar.get(i).getEspecialidad().toLowerCase().contains(texto.toLowerCase())){
-                busquedaDoctors.add(listAuxiliar.get(i));
-                Log.d(TAG, "buscador: " + listAuxiliar);
-            }
+        listAuxiliar.clear();
+
+        if(texto.isEmpty()){
+            presenter.setDataAdapter(busquedaDoctors);
+            return;
         }
 
+        for (int i = 0; i < busquedaDoctors.size(); i++) {
+            if(busquedaDoctors.get(i).getEspecialidad().toLowerCase().contains(texto.toLowerCase())){
+                listAuxiliar.add(new BusquedaDoctor(busquedaDoctors.get(i).getNombre(),busquedaDoctors.get(i).getEspecialidad()));
+            }
+        }
         presenter.setDataAdapter(listAuxiliar);
+
     }
 }

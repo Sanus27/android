@@ -35,7 +35,7 @@ public class SplashActivity extends AppCompatActivity implements SplashView, Cal
 
     @Override
     public void goLogin() {
-        Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
         finish();
     }
